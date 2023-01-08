@@ -1,0 +1,6 @@
+{
+  "MONGODB_HOST" : "localhost",
+  "MONGODB_PORT" : 27017,
+  "DB_NAME" : "mdrm",
+  "COLLECTION_NAME" : "mdrmAlente"
+}

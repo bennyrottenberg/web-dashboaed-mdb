@@ -1,0 +1,6 @@
+{
+  "MONGODB_HOST" : "10.10.230.14",
+  "MONGODB_PORT" : 27017,
+  "DB_NAME" : "ottguard",
+  "COLLECTION_NAME" : "sandBox"
+}
