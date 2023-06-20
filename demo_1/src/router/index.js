@@ -205,6 +205,12 @@ export default new Router({
           //StartWithView
         },
         {
+          path: 'iis-web',
+          name: 'iis-web',
+          component: () => import('@/pages/tables/ed_iis_web')
+          //StartWithView
+        },
+        {
           path: 'stage3-mdrm',
           name: 'stage3-mdrm',
           component: () => import('@/pages/tables/stage3-mdrm')

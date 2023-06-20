@@ -1,6 +1,6 @@
 {
   "MONGODB_HOST" : "localhost",
   "MONGODB_PORT" : 27017,
-  "DB_NAME" : "benny",
-  "COLLECTION_NAME" : "benny_dev"
+  "DB_NAME" : "local",
+  "COLLECTION_NAME" : "ottguard"
 }

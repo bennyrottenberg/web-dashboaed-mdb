@@ -1,7 +1,9 @@
+
+
 from pymongo import MongoClient
 from bson import json_util
 import json
-f = open('config/configOTTSG.json',)
+f = open('config/configOTTSGLocal.json',)
 configFile = json.load(f)
 MONGODB_HOST = configFile['MONGODB_HOST']
 MONGODB_PORT = configFile['MONGODB_PORT']
@@ -45,6 +47,11 @@ def getDatasMDRM():
 
 def getLatestDataOTTGUARD(rowNum):
     connection = MongoClient(MONGODB_HOST, MONGODB_PORT)
+    print(f"MONGODB_HOST: {MONGODB_HOST}")
+    print(f"MONGODB_PORT: {MONGODB_PORT}")
+    print(f"DB_NAME: {DB_NAME}")
+    print(f"COLLECTION_NAME: {COLLECTION_NAME}")
+
     collection = connection[DB_NAME][COLLECTION_NAME]
     projects = collection.find().sort([('$natural', -1)]).limit(rowNum)
     json_projects = editResult(projects,'reverse')

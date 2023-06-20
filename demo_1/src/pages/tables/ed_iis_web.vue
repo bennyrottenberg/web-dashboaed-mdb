@@ -89,9 +89,9 @@
 </template>
 
 <script>
-import row2 from '../../components/tables-dev/rows/ottsg/row2.vue'
-import firstRow from '../../components/tables-dev/rows/ottsg/firstRow.vue'
-import firstRowNoFilter from '../../components/tables-dev/rows/ottsg/firstRowNoFilter.vue'
+import row2 from '../../components/tables-dev/rows/edWeb/row2.vue'
+import firstRow from '../../components/tables-dev/rows/edWeb/firstRow.vue'
+import firstRowNoFilter from '../../components/tables-dev/rows/edWeb/firstRowNoFilter.vue'
 
   export default {
     components: {
