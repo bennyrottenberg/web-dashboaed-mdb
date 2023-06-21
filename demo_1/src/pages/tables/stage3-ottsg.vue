@@ -6,6 +6,23 @@
       <div class="card-card" style="width: 150rem; ">
         <div class="card-body">    
           <b-tabs class="tab-solid tab-solid-primary">
+            <b-tab > 
+               Numbers of runs 
+               <b-dropdown id="ottsg_all_runs_dd" size="sm" :text=this.data_json_for_all_runs_tab.length.toString() variant="outline-primary">        
+              <b-dropdown-item v-for="(component, i) in this.rowsPerPage" :key="'component'+i"> 
+                <button type="button" class="btn bg-transparent btn-btn-link" v-on:click="pageNumToDisplayForAllRunsTab(component)" >{{component}}</button>
+                </b-dropdown-item>
+              </b-dropdown>      
+              <template slot="title">
+                <i class='mdi mdi-home-outline'></i> All runs
+              </template>
+                <div>
+                  <first-row :sortByElement="sortByElement" :filterByFiled="filterByFiled"></first-row> 
+              <build-all-row2 v-for="row in data_json_for_all_runs_tab" :key="row._id.$oid" :row="row"></build-all-row2>  
+                </div>   
+                      
+              
+            </b-tab>
             <b-tab>
               <template slot="title">
                 <i class="mdi mdi-weather-night"></i> Nightly
@@ -64,23 +81,7 @@
                 </div>
               
             </b-tab>
-            <b-tab > 
-               Numbers of runs 
-               <b-dropdown id="ottsg_all_runs_dd" size="sm" :text=this.data_json_for_all_runs_tab.length.toString() variant="outline-primary">        
-              <b-dropdown-item v-for="(component, i) in this.rowsPerPage" :key="'component'+i"> 
-                <button type="button" class="btn bg-transparent btn-btn-link" v-on:click="pageNumToDisplayForAllRunsTab(component)" >{{component}}</button>
-                </b-dropdown-item>
-              </b-dropdown>      
-              <template slot="title">
-                <i class='mdi mdi-home-outline'></i> All runs
-              </template>
-                <div>
-                  <first-row :sortByElement="sortByElement" :filterByFiled="filterByFiled"></first-row> 
-              <build-all-row2 v-for="row in data_json_for_all_runs_tab" :key="row._id.$oid" :row="row"></build-all-row2>  
-                </div>   
-                      
-              
-            </b-tab>
+
           </b-tabs>
         </div>
       </div>
@@ -193,7 +194,7 @@ import firstRowNoFilter from '../../components/tables-dev/rows/ottsg/firstRowNoF
         console.log("function ------------  loadMongoDBCollection started")
         console.log(api_name)
         //api_name = "mdrm-build-all/get_data_json_latests"
-        const response = await fetch("http://10.10.230.14/api/"+api_name);
+        const response = await fetch("http://127.0.0.1:5000/api/"+api_name);
         this.originalJson = await response.json();
         this.originalJson.reverse()
         
@@ -232,6 +233,7 @@ import firstRowNoFilter from '../../components/tables-dev/rows/ottsg/firstRowNoF
         //console.log("loadMongoDBCollection start datajson res is:");
         //console.log(this.datajson)
 
+        console.log("benben")
         console.log(this.data_json_for_all_runs_tab)
 
         //console.log("loadMongoDBCollection start originalJson res is:");

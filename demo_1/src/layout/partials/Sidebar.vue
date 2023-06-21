@@ -2,6 +2,32 @@
   <section class="app-sidebar">
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
       <ul class="nav">
+        <li class="nav-item">
+          <span class="nav-link" v-b-toggle="'table-dropdown'">
+            <span class="menu-title">Tables</span>
+            <i class="menu-arrow"></i>
+            <i class="mdi mdi-table-large menu-icon"></i>
+          </span>
+          <b-collapse accordion="sidebar-accordion" id="table-dropdown">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item">
+                <router-link class="nav-link" to="/tables/stage3-ottsg/">stage3-ottsg</router-link>
+              </li>
+             <li class="nav-item">
+                <router-link class="nav-link" to="/tables/stage3-mdrm/">stage3-mdrm</router-link>
+              </li>
+              <li class="nav-item">
+                <router-link class="nav-link" to="/tables/iis-web/">ED-IIS-Web</router-link>
+              </li>
+               <!--<li class="nav-item">
+                <router-link class="nav-link" to="/tables/advanced-tables/">Advanced Table Try</router-link>
+              </li>
+              <li class="nav-item">
+                <router-link class="nav-link" to="/tables/StartWithView/">StartWithView</router-link>
+              </li>-->
+            </ul>
+          </b-collapse>
+        </li>
         
         <li class="nav-item" v-on:click="collapseAll">
           <router-link class="nav-link" to="/">
@@ -9,7 +35,7 @@
             <i class="mdi mdi-home menu-icon"></i>
           </router-link>
         </li>
-        <!--
+       
          <li class="nav-item" v-on:click="collapseAll">
           <router-link class="nav-link" to="/widgets/">
             <span class="menu-title">Widgets</span>
@@ -167,34 +193,9 @@
             </ul>
           </b-collapse>
         </li>
-        -->
-        <li class="nav-item">
-          <span class="nav-link" v-b-toggle="'table-dropdown'">
-            <span class="menu-title">Tables</span>
-            <i class="menu-arrow"></i>
-            <i class="mdi mdi-table-large menu-icon"></i>
-          </span>
-          <b-collapse accordion="sidebar-accordion" id="table-dropdown">
-            <ul class="nav flex-column sub-menu">
-              <li class="nav-item">
-                <router-link class="nav-link" to="/tables/stage3-ottsg/">stage3-ottsg</router-link>
-              </li>
-             <li class="nav-item">
-                <router-link class="nav-link" to="/tables/stage3-mdrm/">stage3-mdrm</router-link>
-              </li>
-              <li class="nav-item">
-                <router-link class="nav-link" to="/tables/iis-web/">ED-IIS-Web</router-link>
-              </li>
-               <!--<li class="nav-item">
-                <router-link class="nav-link" to="/tables/advanced-tables/">Advanced Table Try</router-link>
-              </li>
-              <li class="nav-item">
-                <router-link class="nav-link" to="/tables/StartWithView/">StartWithView</router-link>
-              </li>-->
-            </ul>
-          </b-collapse>
-        </li>
-        <!--
+       
+
+        
         <li class="nav-item">
           <span class="nav-link" v-b-toggle="'user-page-dropdown'">
             <span class="menu-title">User Pages</span>
@@ -408,7 +409,7 @@
               </ul>
             </div>
           </span>
-        </li> -->
+        </li>
       </ul>
     </nav>
   </section>

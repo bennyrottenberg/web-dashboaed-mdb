@@ -13,40 +13,26 @@
             -->
             <b-col>
                <div class="text-center">
-                <button type="button" class="btn bg-transparent btn-btn-link">Date </button>
+                <button type="button" class="btn bg-transparent btn-btn-link">App Name </button>
               </div>
             </b-col>
             <b-col>
                <div class="text-center">
-                <button type="button" class="btn bg-transparent btn-btn-link" >job </button>
+                <button type="button" class="btn bg-transparent btn-btn-link" >Servers</button>
               </div>
             </b-col>
             <b-col>
                <div class="text-center">
-                <button type="button" class="btn bg-transparent btn-btn-link" >User id </button>
+                <button type="button" class="btn bg-transparent btn-btn-link" >Developer </button>
                 
               </div>
             </b-col>
             <b-col>
                <div class="text-center">
-                <button type="button" class="btn bg-transparent btn-btn-link" >ott version </button>
+                <button type="button" class="btn bg-transparent btn-btn-link" >Maneger </button>
               </div>
             </b-col>
-             <b-col>
-               <div class="text-center">
-                <button type="button" class="btn bg-transparent btn-btn-link" >Platform </button>
-              </div>
-            </b-col>
-             <b-col>
-               <div class="text-center">
-                <button type="button" class="btn bg-transparent btn-btn-link" >Tenant id</button>
-              </div>
-            </b-col>
-            <b-col>
-               <div class="text-center">
-                <button type="button" class="btn bg-transparent btn-btn-link" >Test Results </button>
-              </div>
-            </b-col>
+
             <b-col>
                <div class="text-center">
                 <button type="button" class="btn bg-transparent btn-btn-link" >More</button>

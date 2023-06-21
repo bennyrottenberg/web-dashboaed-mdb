@@ -1,11 +1,45 @@
 <template>
   <div>
-    <h4 class="text-dark">OTT Service Guard Stage 3 pipeline</h4>
+    <h4 class="text-dark">ED IIS Web application summarey</h4>
      
     <div class="col-sm-12 grid-margin stretch-card" >
       <div class="card-card" style="width: 150rem; ">
         <div class="card-body">    
           <b-tabs class="tab-solid tab-solid-primary">
+            <b-tab > 
+               Numbers of runs 
+               <b-dropdown id="ottsg_all_runs_dd" size="sm" :text=this.data_json_for_all_runs_tab.length.toString() variant="outline-primary">        
+              <b-dropdown-item v-for="(component, i) in this.rowsPerPage" :key="'component'+i"> 
+                <button type="button" class="btn bg-transparent btn-btn-link" v-on:click="pageNumToDisplayForAllRunsTab(component)" >{{component}}</button>
+                </b-dropdown-item>
+              </b-dropdown>      
+              <template slot="title">
+                <i class='mdi mdi-home-outline'></i> All runs
+              </template>
+                <div>
+                  <first-row-no-filter :sortByElement="sortByElement" :filterByFiled="filterByFiled"></first-row-no-filter> 
+              <build-all-row2 v-for="row in data_json_for_all_runs_tab" :key="row._id.$oid" :row="row"></build-all-row2>  
+                </div>   
+                      
+              
+            </b-tab>
+            <b-tab > 
+               Numbers of runs 
+               <b-dropdown id="ottsg_all_runs_dd" size="sm" :text=this.data_json_for_all_runs_tab.length.toString() variant="outline-primary">        
+              <b-dropdown-item v-for="(component, i) in this.rowsPerPage" :key="'component'+i"> 
+                <button type="button" class="btn bg-transparent btn-btn-link" v-on:click="pageNumToDisplayForAllRunsTab(component)" >{{component}}</button>
+                </b-dropdown-item>
+              </b-dropdown>      
+              <template slot="title">
+                <i class='mdi mdi-home-outline'></i> All runs
+              </template>
+                <div>
+                  <first-row :sortByElement="sortByElement" :filterByFiled="filterByFiled"></first-row> 
+              <build-all-row2 v-for="row in data_json_for_all_runs_tab" :key="row._id.$oid" :row="row"></build-all-row2>  
+                </div>   
+                      
+              
+            </b-tab>
             <b-tab>
               <template slot="title">
                 <i class="mdi mdi-weather-night"></i> Nightly
@@ -64,23 +98,7 @@
                 </div>
               
             </b-tab>
-            <b-tab > 
-               Numbers of runs 
-               <b-dropdown id="ottsg_all_runs_dd" size="sm" :text=this.data_json_for_all_runs_tab.length.toString() variant="outline-primary">        
-              <b-dropdown-item v-for="(component, i) in this.rowsPerPage" :key="'component'+i"> 
-                <button type="button" class="btn bg-transparent btn-btn-link" v-on:click="pageNumToDisplayForAllRunsTab(component)" >{{component}}</button>
-                </b-dropdown-item>
-              </b-dropdown>      
-              <template slot="title">
-                <i class='mdi mdi-home-outline'></i> All runs
-              </template>
-                <div>
-                  <first-row :sortByElement="sortByElement" :filterByFiled="filterByFiled"></first-row> 
-              <build-all-row2 v-for="row in data_json_for_all_runs_tab" :key="row._id.$oid" :row="row"></build-all-row2>  
-                </div>   
-                      
-              
-            </b-tab>
+
           </b-tabs>
         </div>
       </div>
@@ -247,14 +265,14 @@ import firstRowNoFilter from '../../components/tables-dev/rows/edWeb/firstRowNoF
 
     },
 mounted(){
-this.loadMongoDBCollection('mdrm-build-all/get_data_json_latests_ottguard?rowNum=50')
+this.loadMongoDBCollection('education/get_all_apps_data?rowNum=50')
 },
 created() {
   setTimeout(() => { console.log("wait before load more records"); }, 5000);
-  this.loadMongoDBCollection('mdrm-build-all/get_data_json_latests_ottguard?rowNum=40',this.loadMongoDBCollection_callback())
+  this.loadMongoDBCollection('education/get_all_apps_data?rowNum=50',this.loadMongoDBCollection_callback())
   
-  this.loadMongoDBCollection_for_all_run_tab('mdrm-build-all/get_data_json_latests_ottguard?rowNum=10')
-  this.interval = setInterval(() => {this.loadMongoDBCollection('mdrm-build-all/get_data_json_latests_ottguard?rowNum=100');console.log("load db");}, 600000);
+  this.loadMongoDBCollection_for_all_run_tab('education/get_all_apps_data?rowNum=50')
+  this.interval = setInterval(() => {this.loadMongoDBCollection('education/get_all_apps_data?rowNum=50');console.log("load db");}, 600000);
 },
 
 computed: {
@@ -275,7 +293,7 @@ computed: {
       makeRC: function()
       {
         const a  = this.originalJson.filter((item,index) => {
-          return (item['upstream job'].toString() === 'makeRC' && item['user id'].toString() === 'timer')
+          return ('1' === '1')
         });
         return a
       },

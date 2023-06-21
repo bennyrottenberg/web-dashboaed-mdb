@@ -11,10 +11,17 @@ DB_NAME = configFile['DB_NAME']
 COLLECTION_NAME = configFile['COLLECTION_NAME']
 f.close()
 
-f = open('config/configMDRM.json',)
+f = open('config/configMDRMLocal.json',)
 configFile = json.load(f)
 DB_NAME_MDRM = configFile['DB_NAME']
 COLLECTION_NAME_MDRM_ALENTE = configFile['COLLECTION_NAME']
+f.close()
+
+
+f = open('config/configEDIISWebApps.json',)
+configFile = json.load(f)
+DB_NAME_ED= configFile['DB_NAME']
+COLLECTION_NAME_ED = configFile['COLLECTION_NAME']
 f.close()
 
 def editResult(_projects,option='reverse'):
@@ -65,3 +72,13 @@ def getLatestDataMDRM(rowNum):
     json_projects = editResult(projects,'reverse')
     connection.close()
     return json_projects 
+
+
+
+def getLatestDataED(rowNum):
+    connection = MongoClient(MONGODB_HOST, MONGODB_PORT)
+    collection = connection[DB_NAME_ED][COLLECTION_NAME_ED]
+    projects = collection.find().sort([('$natural', -1)]).limit(rowNum)
+    json_projects = editResult(projects,'reverse')
+    connection.close()
+    return json_projects     

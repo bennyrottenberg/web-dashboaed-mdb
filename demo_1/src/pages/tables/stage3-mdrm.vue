@@ -167,7 +167,7 @@ import firstRowNoFilter from '../../components/tables-dev/rows/mdrmAlente/firstR
       {
         console.log("function ------------  loadMongoDBCollection started api is:"+api_name)
         
-        const response = await fetch("http://10.10.230.14/api/"+api_name);
+        const response = await fetch("http://127.0.0.1:5000/api/"+api_name);
         this.originalJsonMDRM = await response.json();
         this.originalJsonMDRM.reverse()
         console.log("before map")

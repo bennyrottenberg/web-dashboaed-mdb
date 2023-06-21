@@ -42,5 +42,13 @@ def getDatasJsonMDRM():
     return response    
 
 
+@app.route('/api/education/get_all_apps_data')
+def getLatestDataED():
+    rowNum = int(request.args.get('rowNum'))
+    response = Response(connectToMongoDB.getLatestDataED(rowNum) ,mimetype='application/json')
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response   
+
+
 if __name__ == '__main__':
     app.run(host="0.0.0.0")
