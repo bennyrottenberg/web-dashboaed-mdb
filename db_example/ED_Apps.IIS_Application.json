@@ -1,0 +1,21 @@
+[{
+  "_id": {
+    "$oid": "649205da2a4120e6b32abd26"
+  },
+  "appName": "Pty",
+  "servers": [
+    "iprod20121",
+    "iprod20122",
+    "10.10.10.41",
+    "10.10.10.42"
+  ],
+  "developer": "benny"
+},
+{
+  "_id": {
+    "$oid": "6492b27e2a4120e6b32abd28"
+  },
+  "appName": "Nrs",
+  "servers": "iprod20121 ,iprod20122 ,10.10.10.41",
+  "developer": "benny"
+}]
