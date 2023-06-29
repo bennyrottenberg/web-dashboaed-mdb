@@ -2,7 +2,7 @@
   <b-navbar id="template-header" class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row" toggleable="lg">
     <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
       <router-link :class="'navbar-background-white'" class="navbar-brand brand-logo" to="/">
-        <img src="@/assets/images/synamedia-logo.gif"  alt="logo" style="width:140px;height:40px;"/>
+        <!--<img src="@/assets/images/synamedia-logo.gif"  alt="logo" style="width:140px;height:40px;"/>-->
       </router-link>
       <!--         <img src="@/assets/images/synamedia/logo.png" width="70" height="70"/>  -->
     </div>
@@ -21,7 +21,7 @@
         </form>
       </div>-->
       
-      <h4 class="text-dark">Stage 3 pipeline dashboard</h4>
+      <h4 class="text-dark">Web System menagment consul</h4>
       
       
       <!--<b-navbar-nav class="navbar-nav-right ml-auto">

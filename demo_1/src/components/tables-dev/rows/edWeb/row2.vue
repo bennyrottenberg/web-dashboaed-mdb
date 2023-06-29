@@ -8,22 +8,11 @@
         <!-- <b-col><div class="text-center">{{this.row.row}}</div></b-col> -->
          <!-- <b-col><div class="text-center">{{this.row._id.$oid}}</div></b-col> -->
         <b-col class="text-center">{{this.row.appName}}</b-col>
-        <b-col class="text-center">{{this.servers}}</b-col>
+        
+        <b-col class="text-center"><span v-html="servers"></span></b-col>
         <b-col class="text-center">{{this.row['developer']}}</b-col>
         <b-col class="text-center">{{this.row['developer']}}</b-col>
-        <b-col>
-          <table class="table">
-          <tr>
-            <th v-for="(quantity, key) in this.servers" :key='key'>{{quantity}}</th>
-          </tr>
 
-        <tr>
-            <td>Here should be quantity for each size</td>
-        </tr>
-
-        </table>
-
-        </b-col>
 
 
 
@@ -81,7 +70,7 @@
      return {
       counter: 0,
       HE_Component : ["tgs:  "+this.row['tgs'],"ottserviceguard:  "+this.row['ottserviceguard'],"ottgw:  "+this.row['ottgw'],"kps:  "+this.row['kps'],"cpsim:  "+this.row['cpsim'],"srs:  "+this.row['srs']],
-      servers : this.row.servers.split(","),
+      servers : '',
       placement: 'bottom',
       allParams: 'none',
       PlatformStatusToolTip:'',
@@ -92,10 +81,23 @@
     },
     methods: {
 
+      editServers()
+      {
+        var _servers = this.row['servers'].split(',')
+
+        for (let i = 0; i < _servers.length; i++) 
+          {
+            console.log('in loop')
+            this.servers += `<a class="text-dark" href="${_servers[i]}" target="_blank">${_servers[i]}</a><br>`;
+          }
+
+        
+      }
+
 
     },
     mounted() {
-      //this.adjustPlatformStatusToolTip()
+      this.editServers()
     },
 
   }

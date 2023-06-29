@@ -13,12 +13,12 @@
             -->
             <b-col>
                <div class="text-center">
-                <button type="button" class="btn bg-transparent btn-btn-link" v-on:click="sortByElement('Date')">Date <i class="fa fa-sort"></i></button>
+                <button type="button" class="btn bg-transparent btn-btn-link" v-on:click="sortByElement('Date')">Application <i class="fa fa-sort"></i></button>
               </div>
             </b-col>
             <b-col>
                <div class="text-center">
-                <button type="button" class="btn bg-transparent btn-btn-link" v-on:click="sortByElement('job')">job <i class="fa fa-sort"></i></button>
+                <button type="button" class="btn bg-transparent btn-btn-link" v-on:click="sortByElement('job')">Servers <i class="fa fa-sort"></i></button>
                 <!--<button><i class="ti-filter" v-on:click="filterByFiled('1','2')"></i>  </button>-->
                 
                  
@@ -40,28 +40,13 @@
             </b-col>
             <b-col>
                <div class="text-center">
-                <button type="button" class="btn bg-transparent btn-btn-link" v-on:click="sortByElement('User id')">User id <i class="fa fa-sort"></i></button>
+                <button type="button" class="btn bg-transparent btn-btn-link" v-on:click="sortByElement('User id')">developer <i class="fa fa-sort"></i></button>
                 
               </div>
             </b-col>
             <b-col>
                <div class="text-center">
-                <button type="button" class="btn bg-transparent btn-btn-link" v-on:click="sortByElement('ott version')">ott version <i class="fa fa-sort"></i></button>
-              </div>
-            </b-col>
-             <b-col>
-               <div class="text-center">
-                <button type="button" class="btn bg-transparent btn-btn-link" v-on:click="sortByElement('Platform')">Platform <i class="fa fa-sort"></i></button>
-              </div>
-            </b-col>
-             <b-col>
-               <div class="text-center">
-                <button type="button" class="btn bg-transparent btn-btn-link" v-on:click="sortByElement('HE Version')">Tenant id <i class="fa fa-sort"></i></button>
-              </div>
-            </b-col>
-            <b-col>
-               <div class="text-center">
-                <button type="button" class="btn bg-transparent btn-btn-link" v-on:click="sortByElement('Test Results')">Test Results <i class="fa fa-sort"></i></button>
+                <button type="button" class="btn bg-transparent btn-btn-link" v-on:click="sortByElement('ott version')">maneger <i class="fa fa-sort"></i></button>
               </div>
             </b-col>
             <b-col>

@@ -1,11 +1,12 @@
 <template>
   <div>
-    <h4 class="text-dark">ED IIS Web application summarey</h4>
+    <h4 class="text-dark">ED IIS Web application</h4>
      
     <div class="col-sm-12 grid-margin stretch-card" >
       <div class="card-card" style="width: 150rem; ">
         <div class="card-body">    
           <b-tabs class="tab-solid tab-solid-primary">
+            
             <b-tab > 
                Numbers of runs 
                <b-dropdown id="ottsg_all_runs_dd" size="sm" :text=this.data_json_for_all_runs_tab.length.toString() variant="outline-primary">        
@@ -14,24 +15,7 @@
                 </b-dropdown-item>
               </b-dropdown>      
               <template slot="title">
-                <i class='mdi mdi-home-outline'></i> All runs
-              </template>
-                <div>
-                  <first-row-no-filter :sortByElement="sortByElement" :filterByFiled="filterByFiled"></first-row-no-filter> 
-              <build-all-row2 v-for="row in data_json_for_all_runs_tab" :key="row._id.$oid" :row="row"></build-all-row2>  
-                </div>   
-                      
-              
-            </b-tab>
-            <b-tab > 
-               Numbers of runs 
-               <b-dropdown id="ottsg_all_runs_dd" size="sm" :text=this.data_json_for_all_runs_tab.length.toString() variant="outline-primary">        
-              <b-dropdown-item v-for="(component, i) in this.rowsPerPage" :key="'component'+i"> 
-                <button type="button" class="btn bg-transparent btn-btn-link" v-on:click="pageNumToDisplayForAllRunsTab(component)" >{{component}}</button>
-                </b-dropdown-item>
-              </b-dropdown>      
-              <template slot="title">
-                <i class='mdi mdi-home-outline'></i> All runs
+                <i class='mdi mdi-home-outline'></i> All apps
               </template>
                 <div>
                   <first-row :sortByElement="sortByElement" :filterByFiled="filterByFiled"></first-row> 
