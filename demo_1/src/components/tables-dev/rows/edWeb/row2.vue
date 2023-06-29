@@ -11,7 +11,7 @@
         
         <b-col class="text-center"><span v-html="servers"></span></b-col>
         <b-col class="text-center">{{this.row['developer']}}</b-col>
-        <b-col class="text-center">{{this.row['developer']}}</b-col>
+        <b-col class="text-center">{{this.row['manager']}}</b-col>
 
 
 
