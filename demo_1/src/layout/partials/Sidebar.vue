@@ -19,6 +19,9 @@
               <li class="nav-item">
                 <router-link class="nav-link" to="/tables/iis-web/">ED-IIS-Web</router-link>
               </li>
+              <li class="nav-item">
+                <router-link class="nav-link" to="/tables/dropdownMenu/">new-menu</router-link>
+              </li>
                <!--<li class="nav-item">
                 <router-link class="nav-link" to="/tables/advanced-tables/">Advanced Table Try</router-link>
               </li>

@@ -3,20 +3,26 @@
     <section class = "dropdown-wrapper">
     
     <div @click="isVisible =!isVisible " class= "selected-item">
-    <span>{{this.selectedItem}}</span>
-    <svg class="drop-down-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height = "24">
-
-    
+    <span v-if="selectedItem"> {{this.selectedItem}}</span>
+    <span v-else> Select User</span>
+    <svg 
+    :class="isVisible ? 'dropdown' : ''"
+    class="drop-down-icon" 
+    xmlns="http://www.w3.org/2000/svg" 
+    viewBox="0 0 24 24" 
+    width="24" 
+    height = "24">
     <path d="M11.9997 10.8284L7.04996 15.7782L5.63574 14.364L11.9997 8L18.3637 14.364L16.9495 15.7782L11.9997 10.8284Z">
-
     </path>
     </svg>
+    
     
     
     
     </div>
     <div v-if="isVisible" class="dropdown-popover" >
     <input v-model="searchQuery" type="text" placeholder="Seacrch for user"  >
+    <span v-if="filteredUser.length === 0" >No data avilable</span>
     <div class="opitons">
         <ul>
         <li @click="selecteItem(user)" 
@@ -46,7 +52,7 @@
             selecteItem(user)
             {
              this.selectedItem = user.name
-             //this.isVisible = false
+             this.isVisible = false
             }
         },
         mounted(){
@@ -92,8 +98,17 @@
       align-items: center;
       font-size: 16px;
       font-weight: 500;
+      .drop-down-icon
+      {
+        transform: rotate(0deg);
+        transition: all 0.5s ease;
+        &.dropdown{
+            transform: rotate(180deg);
+        }
+
+      }
+
     }
-    
     
     }
     
@@ -110,7 +125,7 @@
     
       input
       {
-        width: 90%;
+        width: 100%;
         height: 30px;
         border: 2px solid lightgray;
         font-size: 16px;

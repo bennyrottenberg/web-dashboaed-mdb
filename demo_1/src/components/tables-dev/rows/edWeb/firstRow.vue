@@ -21,8 +21,16 @@
                 <button type="button" class="btn bg-transparent btn-btn-link" v-on:click="sortByElement('job')">Servers <i class="fa fa-sort"></i></button>
                 <!--<button><i class="ti-filter" v-on:click="filterByFiled('1','2')"></i>  </button>-->
                 
-                 
-                 <b-dropdown id="ddown21" variant="gradient-secondary">
+
+
+                <Dropdown  class="form-control" name="subject"  :options="options"       
+            placeholder="Please select an animal" autocomplete="off"
+>
+</Dropdown>
+
+                <input v-model="searchQuery" type="text" placeholder="filter app">
+             <!-- <b-dropdown id="ddown21" variant="gradient-secondary">
+                <input v-model="searchQuery" type="text">
                 <template slot="button-content">
                   <i class="ti-filter"></i>
                 </template>
@@ -36,6 +44,7 @@
                 <b-dropdown-item><button type="button" class="btn bg-transparent btn-btn-link" v-on:click="filterByFiled('upstream job','Android Client Artifactory')">Android Client Monitor</button></b-dropdown-item>
                 <b-dropdown-item><button type="button" class="btn bg-transparent btn-btn-link" v-on:click="filterByFiled('upstream job','Android app git')" >Android testApp Monitor</button></b-dropdown-item>
               </b-dropdown>
+            -->
               </div>
             </b-col>
             <b-col>
@@ -63,7 +72,7 @@
     </div>  
 </template>
 
-<script>
+<script >
   
   export default {
     
@@ -71,9 +80,22 @@
       sortByElement : {type: Function},
       filterByFiled: {type: Function}
     },
-    //data() {
-    //  return {row: []}
-    //},
+    data() {
+      return {
+
+        searchQuery:"",
+        selectedUtem:null,
+        options: [
+              { name: 'Delhi', id: '1' },
+              { name: 'Bhopal', id: '2' },
+              { name: 'Patna', id: '3' },
+              { name: 'Ranchi', id: '4' },
+              { name: 'Noida', id: '5' }                         
+     ],    
+
+
+      }
+    },
     methods: {
       printData() {
         

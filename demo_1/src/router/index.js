@@ -217,6 +217,12 @@ export default new Router({
           //StartWithView
         },
         {
+          path: 'dropdownMenu',
+          name: 'dropdownMenu',
+          component: () => import('@/pages/tables/dropdownMenu')
+          //StartWithView
+        },
+        {
           path: 'StartWithView',
           name: 'StartWithView',
           component: () => import('@/pages/tables/StartWithView')
