@@ -20,7 +20,7 @@
     
     
     </div>
-    <div v-if="isVisible" class="dropdown-popover" >
+    <div :class="isVisible ? 'visible' : 'invisible'  " class="dropdown-popover" >
     <input v-model="searchQuery" type="text" placeholder="Seacrch for user"  >
     <span v-if="filteredUser.length === 0" >No data avilable</span>
     <div class="opitons">
@@ -122,6 +122,16 @@
       background-color: #fff;
       max-width: 100%;
       padding: 15px;
+      visibility: hidden;
+      transition: all 0.5s ease-in-out;
+      max-height: 0px;
+      overflow: hidden ;
+
+      &.visible{
+        max-height: 450px;
+        visibility: visible;
+      }
+
     
       input
       {
