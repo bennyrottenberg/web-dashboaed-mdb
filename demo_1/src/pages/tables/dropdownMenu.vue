@@ -25,11 +25,11 @@
     <span v-if="filteredUser.length === 0" >No data avilable</span>
     <div class="opitons">
         <ul>
-        <li @click="selecteItem(user)" 
+        <li v-on:click="selecteItem(user);filterByApp(user)" 
             v-for="(user, index) in filteredUser" 
             :key="`user-${index}`"
             >
-            {{ user.name }}
+            {{ user.appName }}
         </li>
         </ul>
     </div>
@@ -39,6 +39,10 @@
     
     <script>
     export default {
+        props: {
+      
+      filterByApp: {type: Function}
+    },
         data()
         {
             return {
@@ -51,12 +55,14 @@
         methods :{
             selecteItem(user)
             {
-             this.selectedItem = user.name
+             this.selectedItem = user.appName
+             console.log("benben")
              this.isVisible = false
             }
         },
         mounted(){
-            fetch("https://jsonplaceholder.typicode.com/users")
+            var api_name = "education/get_all_apps_data?rowNum=50"
+            fetch("http://127.0.0.1:5000/api/"+api_name)
             .then (res => res.json())
             .then(json => 
             {
@@ -83,6 +89,7 @@
     
     <style scoped lang = "scss">
     .dropdown-wrapper{
+        
     max-width: 350px ;
     position: relative;
     margin: 0 auto; 

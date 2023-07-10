@@ -13,7 +13,9 @@
             -->
             <b-col>
                <div class="text-center">
+                
                 <button type="button" class="btn bg-transparent btn-btn-link" v-on:click="sortByElement('Date')">Application <i class="fa fa-sort"></i></button>
+                <DropdownMenu-search :filterByApp="filterByApp"></DropdownMenu-search>
               </div>
             </b-col>
             <b-col>
@@ -23,12 +25,6 @@
                 
 
 
-                <Dropdown  class="form-control" name="subject"  :options="options"       
-            placeholder="Please select an animal" autocomplete="off"
->
-</Dropdown>
-
-                <input v-model="searchQuery" type="text" placeholder="filter app">
              <!-- <b-dropdown id="ddown21" variant="gradient-secondary">
                 <input v-model="searchQuery" type="text">
                 <template slot="button-content">
@@ -74,11 +70,17 @@
 
 <script >
   
+  import DropdownMenu from '../../../../pages/tables/dropdownMenu.vue'
   export default {
+
+    components: {
+      "DropdownMenu-search": DropdownMenu
+    },
+
+    
     
     props: {
-      sortByElement : {type: Function},
-      filterByFiled: {type: Function}
+      filterByApp: {type: Function}
     },
     data() {
       return {

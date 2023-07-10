@@ -16,9 +16,11 @@
               </b-dropdown>      
               <template slot="title">
                 <i class='mdi mdi-home-outline'></i> All apps
+                
               </template>
                 <div>
-                  <first-row :sortByElement="sortByElement" :filterByFiled="filterByFiled"></first-row> 
+                  <first-row :filterByApp="filterByApp"></first-row> 
+                  <!--<first-row :sortByElement="sortByElement" :filterByFiled="filterByFiled"></first-row> -->
               <build-all-row2 v-for="row in data_json_for_all_runs_tab" :key="row._id.$oid" :row="row"></build-all-row2>  
                 </div>   
                       
@@ -95,11 +97,12 @@ import row2 from '../../components/tables-dev/rows/edWeb/row2.vue'
 import firstRow from '../../components/tables-dev/rows/edWeb/firstRow.vue'
 import firstRowNoFilter from '../../components/tables-dev/rows/edWeb/firstRowNoFilter.vue'
 
+
   export default {
     components: {
       "build-all-row2": row2,
       "first-row": firstRow,
-      "first-row-no-filter": firstRowNoFilter
+      "first-row-no-filter": firstRowNoFilter,
     },
     data() {
       return {
@@ -148,6 +151,15 @@ import firstRowNoFilter from '../../components/tables-dev/rows/edWeb/firstRowNoF
         });
         this.data_json_for_all_runs_tab = a
         }
+
+      },
+      filterByApp(FilterBy)
+      {
+        console.log("hello benben")
+        console.log(FilterBy.appName)
+
+
+        
 
       },
       ToDateTimeJava(dateTime)
