@@ -4,7 +4,7 @@
     
     <div @click="isVisible =!isVisible " class= "selected-item">
     <span v-if="selectedItem"> {{this.selectedItem}}</span>
-    <span v-else> Select User</span>
+    <span v-else>Search</span>
     <svg 
     :class="isVisible ? 'dropdown' : ''"
     class="drop-down-icon" 
@@ -21,11 +21,11 @@
     
     </div>
     <div :class="isVisible ? 'visible' : 'invisible'  " class="dropdown-popover" >
-    <input v-model="searchQuery" type="text" placeholder="Seacrch for user"  >
+    <input v-model="searchQuery" type="text" placeholder="Search app"  >
     <span v-if="filteredUser.length === 0" >No data avilable</span>
     <div class="opitons">
         <ul>
-        <li v-on:click="selecteItem(user);filterByApp(user)" 
+        <li v-on:click="selecteItem(user);filterByApp('appName',user)" 
             v-for="(user, index) in filteredUser" 
             :key="`user-${index}`"
             >
@@ -68,6 +68,9 @@
             {
                 console.log (json);
                 this.userArray = json
+                this.userArray.sort(function(a, b) {
+                    return a.appName.localeCompare(b.appName)
+});
 
             });
     },
@@ -93,6 +96,7 @@
     max-width: 350px ;
     position: relative;
     margin: 0 auto; 
+    z-index: 1;  //this make the drop down search to open avove the other atribut
     
     .selected-item
     {

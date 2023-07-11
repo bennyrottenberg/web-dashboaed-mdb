@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main-div">
     <h4 class="text-dark">ED IIS Web application</h4>
      
     <div class="col-sm-12 grid-margin stretch-card" >
@@ -153,11 +153,23 @@ import firstRowNoFilter from '../../components/tables-dev/rows/edWeb/firstRowNoF
         }
 
       },
-      filterByApp(FilterBy)
+      filterByApp(FilterBy,FiledVal)
       {
+        console.log("function ------------  filterByFiled started")
+          console.log("FilterBy: "+FilterBy)
+          console.log("FiledVal: "+FiledVal)
         console.log("hello benben")
-        console.log(FilterBy.appName)
+        console.log(FiledVal.appName)
+        
+        console.log(this.data_json_for_all_runs_tab)
 
+        const a  = this.originalJson_for_all_run_tab.filter((item,index) => { 
+          return ( (item["appName"].toString()).includes(FiledVal.appName.toString()) )
+
+        });
+        this.data_json_for_all_runs_tab = a
+
+        
 
         
 
@@ -332,4 +344,6 @@ computed: {
         margin : 20px !important;
         
     }
+    
+    
 </style>
