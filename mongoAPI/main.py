@@ -49,6 +49,13 @@ def getLatestDataED():
     response.headers.add("Access-Control-Allow-Origin", "*")
     return response   
 
+@app.route('/api/users/<id>' , methods=["PATCH"])
+def update_user(id):
+   
+    response = Response(connectToMongoDB.update_user(id) ,mimetype='application/json')
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
+
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0")

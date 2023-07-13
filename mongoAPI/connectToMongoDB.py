@@ -2,7 +2,11 @@
 
 from pymongo import MongoClient
 from bson import json_util
+from bson.objectid import ObjectId
 import json
+from flask import Response
+from flask import request
+
 f = open('config/configOTTSGLocal.json',)
 configFile = json.load(f)
 MONGODB_HOST = configFile['MONGODB_HOST']
@@ -81,4 +85,38 @@ def getLatestDataED(rowNum):
     projects = collection.find().sort([('$natural', -1)]).limit(rowNum)
     json_projects = editResult(projects,'reverse')
     connection.close()
-    return json_projects     
+    return json_projects 
+
+def update_user(id):
+    connection = MongoClient(MONGODB_HOST, MONGODB_PORT)
+    collection = connection[DB_NAME_ED][COLLECTION_NAME_ED]
+    try:
+        dbResponse = collection.update_one(
+        {"_id": ObjectId(id)},
+        {"$set":{"appName":request.form["appName"]}}
+        )
+       
+        #for attr in dir(dbResponse):
+        #    print (f"*******{attr}*******")
+
+    except Exception as ex:
+        print("*******************************************")
+        print(ex)
+        print("*******************************************")
+        return Response(
+            response = json.dumps(
+                {"message":"error"}
+            ),
+            status=500,
+            mimetype = "application.json"
+        )
+
+
+
+
+    
+
+
+
+
+
