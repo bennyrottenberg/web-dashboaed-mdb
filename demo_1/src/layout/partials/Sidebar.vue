@@ -22,6 +22,12 @@
               <li class="nav-item">
                 <router-link class="nav-link" to="/tables/dropdownMenu/">new-menu</router-link>
               </li>
+              <li class="nav-item">
+                <router-link class="nav-link" to="/tables/addNewApplication/">add-new-application</router-link>
+              </li>
+              <li class="nav-item">
+                <router-link class="nav-link" to="/tables/updateApplication/">update-application</router-link>
+              </li>
                <!--<li class="nav-item">
                 <router-link class="nav-link" to="/tables/advanced-tables/">Advanced Table Try</router-link>
               </li>

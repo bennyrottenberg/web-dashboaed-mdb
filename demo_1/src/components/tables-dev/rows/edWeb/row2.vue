@@ -57,10 +57,12 @@
 <script>
 //alertWithImage.vue
  import parametersWindow from '@/components/alerts/sweet-alert/parametersWindow.vue'  
+ 
 
   export default {
    components: {
-      "parameters-window": parametersWindow
+      "parameters-window": parametersWindow,
+      
     },
     
     props: ['row','index'], 

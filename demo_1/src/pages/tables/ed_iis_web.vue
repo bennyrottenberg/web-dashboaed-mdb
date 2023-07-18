@@ -8,12 +8,31 @@
           <b-tabs class="tab-solid tab-solid-primary">
             
             <b-tab > 
-               Numbers of runs 
+
+              
+              <!--<b-button variant="primary" @click="addApplicationComponentisVisible =!addApplicationComponentisVisible " class="btn btn-fw">Primary</b-button>
+              <div :class="addApplicationComponentisVisible ? 'addApplicationVisible' : 'addApplicationInvisible'  " class="add-new-application" >
+                <add-new-application></add-new-application>
+              </div>
+            -->
+            <b-button variant="primary" v-on:click="addApplicationComponentisVisible =!addApplicationComponentisVisible ;changeAddNewAppButtonTxt()" class="btn btn-fw">{{ addAppButtonTxt }}</b-button>
+            <Transition name="slide-fade">
+              <div v-show="addApplicationComponentisVisible" :class="addApplicationComponentisVisible ? 'addApplicationVisible' : 'addApplicationInvisible'  " class="add-new-application" >
+                
+                <add-new-application></add-new-application>
+              </div>
+
+            </Transition>  
+
+              Numbers of runs 
                <b-dropdown id="ottsg_all_runs_dd" size="sm" :text=this.data_json_for_all_runs_tab.length.toString() variant="outline-primary">        
               <b-dropdown-item v-for="(component, i) in this.rowsPerPage" :key="'component'+i"> 
                 <button type="button" class="btn bg-transparent btn-btn-link" v-on:click="pageNumToDisplayForAllRunsTab(component)" >{{component}}</button>
                 </b-dropdown-item>
-              </b-dropdown>      
+              </b-dropdown>
+              
+
+              
               <template slot="title">
                 <i class='mdi mdi-home-outline'></i> All apps
                 
@@ -96,6 +115,7 @@
 import row2 from '../../components/tables-dev/rows/edWeb/row2.vue'
 import firstRow from '../../components/tables-dev/rows/edWeb/firstRow.vue'
 import firstRowNoFilter from '../../components/tables-dev/rows/edWeb/firstRowNoFilter.vue'
+import addNewApplication from '@/pages/forms/add-new-application.vue' 
 
 
   export default {
@@ -103,6 +123,7 @@ import firstRowNoFilter from '../../components/tables-dev/rows/edWeb/firstRowNoF
       "build-all-row2": row2,
       "first-row": firstRow,
       "first-row-no-filter": firstRowNoFilter,
+      "add-new-application": addNewApplication,
     },
     data() {
       return {
@@ -111,11 +132,26 @@ import firstRowNoFilter from '../../components/tables-dev/rows/edWeb/firstRowNoF
         originalJson: [],
        datajson: [],
        originalJson_for_all_run_tab: [],
-       data_json_for_all_runs_tab: []
+       data_json_for_all_runs_tab: [],
+       addAppButtonTxt :"Add new",
+
+       addApplicationComponentisVisible: false,
        
       }
     },
     methods: {
+      changeAddNewAppButtonTxt()
+      {
+        if(this.addAppButtonTxt != "Cancel")
+        {
+          this.addAppButtonTxt = "Cancel"
+        }
+        else
+        {
+          this.addAppButtonTxt = "Add new"
+        }
+        
+      },
       pageNumToDisplayForAllRunsTab(Num)
       {
         this.rowsPerPageDefVal = Num
@@ -344,6 +380,37 @@ computed: {
         margin : 20px !important;
         
     }
+    .add-new-application
+    {
+   
+
+
+
+      transition: all 0.5s ease;
+      
+      overflow: hidden ;
     
+      
+
+      
+   
+
+     
+      
+    }
+
+    .slide-fade-enter-active {
+  transition: all 0.3s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateX(10px);
+  opacity: 0;
+}  
     
 </style>

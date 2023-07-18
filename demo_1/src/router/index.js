@@ -223,6 +223,18 @@ export default new Router({
           //StartWithView
         },
         {
+          path: 'addNewApplication',
+          name: 'addNewApplication',
+          component: () => import('@/pages/forms/add-new-application')
+          //StartWithView
+        }, //updateApplication
+        {
+          path: 'updateApplication',
+          name: 'updateApplication',
+          component: () => import('@/pages/forms/update-application')
+          //StartWithView
+        }, //updateApplication
+        {
           path: 'StartWithView',
           name: 'StartWithView',
           component: () => import('@/pages/tables/StartWithView')

@@ -49,12 +49,20 @@ def getLatestDataED():
     response.headers.add("Access-Control-Allow-Origin", "*")
     return response   
 
-@app.route('/api/users/<id>' , methods=["PATCH"])
-def update_user(id):
+@app.route('/api/education/update_app/<id>' , methods=["PATCH"])
+def update_app(id):
    
-    response = Response(connectToMongoDB.update_user(id) ,mimetype='application/json')
+    response = Response(connectToMongoDB.update_app(id) ,mimetype='application/json')
     response.headers.add("Access-Control-Allow-Origin", "*")
     return response
+
+
+@app.route('/api/education/insert_app/' , methods=["POST"])
+def insert_app():
+   
+    response = Response(connectToMongoDB.insert_app() ,mimetype='application/json')
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response    
 
 
 if __name__ == '__main__':

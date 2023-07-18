@@ -140,6 +140,9 @@ import firstRowNoFilter from '../../components/tables-dev/rows/ottsg/firstRowNoF
         }           
         else
         {
+          console.log("function ------------  filterByFiled started")
+          console.log("FilterBy: "+FilterBy)
+          console.log("FiledVal: "+FiledVal)
          this.data_json_for_all_runs_tab = []
           const a  = this.originalJson_for_all_run_tab.filter((item,index) => { 
           return ( (item[FilterBy].toString()).includes(FiledVal.toString()) )

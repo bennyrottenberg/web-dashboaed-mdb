@@ -9,7 +9,7 @@
               <div class="d-flex align-items-center justify-content-between">
                 <h5 class="page-title mb-n2">Open Tickets</h5>
                 <p class="mt-2 mb-n1 ml-3 text-muted">230 Tickets</p>
-              </div>
+              </div>21 May 2019 
               <form class="d-lg-flex pt-2 pt-md-0 align-items-stretch justify-content-between">
                 <input type="text" class="form-control" placeholder="Search">
                 <button type="submit" class="btn btn-gradient-success no-wrap ml-0 ml-lg-4 mt-2 mt-lg-0">Search</button>
