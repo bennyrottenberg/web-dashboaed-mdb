@@ -19,11 +19,11 @@
 </template>
 
 <script>
- //import showRowWindow from '@/components/alerts/sweet-alert/showRowWindow.vue'  
+ import showRowWindow from '@/components/alerts/sweet-alert/showRowWindow.vue'  
  
 export default {
   components: {
-      //"show-Row-Window": showRowWindow
+      "show-Row-Window": showRowWindow
     },
   props: ['row'],
   name: 'parametersWindow',

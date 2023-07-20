@@ -3,6 +3,7 @@ from flask import Flask, jsonify
 import connectToMongoDB
 from flask import Response
 from flask import request
+from flask_cors import CORS,cross_origin
 
 app = Flask('helloworld')
 
@@ -57,11 +58,16 @@ def update_app(id):
     return response
 
 
-@app.route('/api/education/insert_app/' , methods=["POST"])
-def insert_app():
+@app.route('/api/education/insert_app/<mydict>' , methods=["POST"])
+def insert_app(mydict):
+    
+    print ("insert_app function started")
    
-    response = Response(connectToMongoDB.insert_app() ,mimetype='application/json')
+    response = Response(connectToMongoDB.insert_app(mydict) ,mimetype='application/json')
     response.headers.add("Access-Control-Allow-Origin", "*")
+    response.headers.add('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+    #response.headers.add('Access-Control-Allow-Credentials', true)
+    response.headers.add('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH')
     return response    
 
 

@@ -36,8 +36,8 @@
                     <b-form-input  placeholder="test,dev,prod" required v-model="Enviroment"></b-form-input>
                   </b-form-group>
 
-                  <b-button type="submit" variant="success" class="mr-2" v-on:click="printForm()" >Submit</b-button>
-                  <b-button variant="light">Cancel</b-button>
+                  <b-button  variant="success" class="mr-2" v-on:click="newAplicationReturnValues(ApplicationName,Servers,Developer,manager,Enviroment)" >Submit</b-button>
+                  <!--<b-button variant="light">Cancel</b-button>-->
                 </form>
                 <p>ApplicationName is {{ApplicationName}}</p>
               </div>
@@ -53,7 +53,10 @@
 
 <script lang="js">
 export default {
-  name: 'basicFormsElements',
+  //name: 'basicFormsElements',
+  props: {
+      newAplicationReturnValues: {type: Function}
+      },
   data () {
     return {
       ApplicationName : '',

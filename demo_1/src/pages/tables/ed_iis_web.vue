@@ -18,8 +18,7 @@
             <b-button variant="primary" v-on:click="addApplicationComponentisVisible =!addApplicationComponentisVisible ;changeAddNewAppButtonTxt()" class="btn btn-fw">{{ addAppButtonTxt }}</b-button>
             <Transition name="slide-fade">
               <div v-show="addApplicationComponentisVisible" :class="addApplicationComponentisVisible ? 'addApplicationVisible' : 'addApplicationInvisible'  " class="add-new-application" >
-                
-                <add-new-application></add-new-application>
+                <add-new-application :newAplicationReturnValues = "newAplicationReturnValues"></add-new-application>
               </div>
 
             </Transition>  
@@ -140,6 +139,45 @@ import addNewApplication from '@/pages/forms/add-new-application.vue'
       }
     },
     methods: {
+      async insertApplication(mydict)
+      {
+        const requestOptions = {
+        method: "POST",
+    
+    
+        body: JSON.stringify(mydict)
+      };
+  
+        console.log(" call api: http://localhost:5000/api/education/insert_app/ with params: ",requestOptions)
+        const response = await fetch("http://localhost:5000/api/education/insert_app/benny", requestOptions);
+        //if response != "":
+          print
+        //const data = await response.json();
+        //console.log(data.id);
+
+      },
+      newAplicationReturnValues(ApplicationName,Servers,Developer,manager,Enviroment){
+        console.log(ApplicationName,Servers,Developer,manager,Enviroment)
+        this.editDataBeforeInsertsToDB(ApplicationName,Servers,Developer,manager,Enviroment)
+
+        //this.addApplicationComponentisVisible =!this.addApplicationComponentisVisible //add his at the end
+
+
+      },
+      editDataBeforeInsertsToDB(ApplicationName,Servers,Developer,manager,Enviroment)
+      {
+        console.log(ApplicationName,Servers,Developer,manager,Enviroment)
+        var mydict = 
+        { 
+          "appName": ApplicationName, 
+          "servers": Servers ,
+          "developer" : Developer,
+          "manager" : manager,
+          "Enviroment": Enviroment
+        }
+        this.insertApplication(mydict)
+
+      },
       changeAddNewAppButtonTxt()
       {
         if(this.addAppButtonTxt != "Cancel")
