@@ -39,7 +39,6 @@
                   <b-button  variant="success" class="mr-2" v-on:click="newAplicationReturnValues(ApplicationName,Servers,Developer,manager,Enviroment)" >Submit</b-button>
                   <!--<b-button variant="light">Cancel</b-button>-->
                 </form>
-                <p>ApplicationName is {{ApplicationName}}</p>
               </div>
             </div>
           </div>

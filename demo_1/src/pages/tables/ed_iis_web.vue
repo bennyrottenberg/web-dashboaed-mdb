@@ -15,7 +15,11 @@
                 <add-new-application></add-new-application>
               </div>
             -->
-            <b-button variant="primary" v-on:click="addApplicationComponentisVisible =!addApplicationComponentisVisible ;changeAddNewAppButtonTxt()" class="btn btn-fw">{{ addAppButtonTxt }}</b-button>
+            <div style="padding-bottom:10px" >
+              <b-button  variant="primary" v-on:click="addApplicationComponentisVisible =!addApplicationComponentisVisible ;changeAddNewAppButtonTxt()" class="btn btn-fw">{{ addAppButtonTxt }}</b-button>
+            </div>
+            
+            
             <Transition name="slide-fade">
               <div v-show="addApplicationComponentisVisible" :class="addApplicationComponentisVisible ? 'addApplicationVisible' : 'addApplicationInvisible'  " class="add-new-application" >
                 <add-new-application :newAplicationReturnValues = "newAplicationReturnValues"></add-new-application>
@@ -23,13 +27,13 @@
 
             </Transition>  
 
-              Numbers of runs 
+              <!--Numbers of runs 
                <b-dropdown id="ottsg_all_runs_dd" size="sm" :text=this.data_json_for_all_runs_tab.length.toString() variant="outline-primary">        
               <b-dropdown-item v-for="(component, i) in this.rowsPerPage" :key="'component'+i"> 
                 <button type="button" class="btn bg-transparent btn-btn-link" v-on:click="pageNumToDisplayForAllRunsTab(component)" >{{component}}</button>
                 </b-dropdown-item>
               </b-dropdown>
-              
+            -->
 
               
               <template slot="title">
@@ -144,23 +148,34 @@ import addNewApplication from '@/pages/forms/add-new-application.vue'
         const requestOptions = {
         method: "POST",
     
-    
+       //headers: { "Access-Control-Allow-Origin": "*" },
         body: JSON.stringify(mydict)
+        
       };
   
         console.log(" call api: http://localhost:5000/api/education/insert_app/ with params: ",requestOptions)
-        const response = await fetch("http://localhost:5000/api/education/insert_app/benny", requestOptions);
-        //if response != "":
-          print
-        //const data = await response.json();
-        //console.log(data.id);
+        const response = await fetch("http://localhost:5000/api/education/insert_app/"+JSON.stringify(mydict), requestOptions);
 
+        
+
+
+
+
+
+       this.refreshData()
+
+
+      },
+      refreshData()
+      {
+        this.loadMongoDBCollection_for_all_run_tab('education/get_all_apps_data?rowNum=50')
       },
       newAplicationReturnValues(ApplicationName,Servers,Developer,manager,Enviroment){
         console.log(ApplicationName,Servers,Developer,manager,Enviroment)
         this.editDataBeforeInsertsToDB(ApplicationName,Servers,Developer,manager,Enviroment)
 
-        //this.addApplicationComponentisVisible =!this.addApplicationComponentisVisible //add his at the end
+        this.addApplicationComponentisVisible =!this.addApplicationComponentisVisible //add his at the end
+        this.addAppButtonTxt = "Add new"
 
 
       },
@@ -347,14 +362,15 @@ import addNewApplication from '@/pages/forms/add-new-application.vue'
 
     },
 mounted(){
-this.loadMongoDBCollection('education/get_all_apps_data?rowNum=50')
+//this.loadMongoDBCollection('education/get_all_apps_data?rowNum=50')
 },
 created() {
   setTimeout(() => { console.log("wait before load more records"); }, 5000);
   this.loadMongoDBCollection('education/get_all_apps_data?rowNum=50',this.loadMongoDBCollection_callback())
   
   this.loadMongoDBCollection_for_all_run_tab('education/get_all_apps_data?rowNum=50')
-  this.interval = setInterval(() => {this.loadMongoDBCollection('education/get_all_apps_data?rowNum=50');console.log("load db");}, 600000);
+  //this.interval = setInterval(() => {this.loadMongoDBCollection('education/get_all_apps_data?rowNum=50');console.log("load db");}, 600000);
+  this.interval = setInterval(() => {this.loadMongoDBCollection_for_all_run_tab('education/get_all_apps_data?rowNum=50');console.log("load education mongo db");}, 600000);
 },
 
 computed: {

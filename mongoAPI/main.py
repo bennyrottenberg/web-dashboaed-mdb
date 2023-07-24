@@ -60,15 +60,13 @@ def update_app(id):
 
 @app.route('/api/education/insert_app/<mydict>' , methods=["POST"])
 def insert_app(mydict):
-    
     print ("insert_app function started")
-   
     response = Response(connectToMongoDB.insert_app(mydict) ,mimetype='application/json')
     response.headers.add("Access-Control-Allow-Origin", "*")
-    response.headers.add('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+    #response.headers.add('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
     #response.headers.add('Access-Control-Allow-Credentials', true)
-    response.headers.add('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH')
-    return response    
+    #response.headers.add('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH')
+    return response
 
 
 if __name__ == '__main__':

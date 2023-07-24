@@ -88,22 +88,14 @@ def getLatestDataED(rowNum):
     return json_projects 
 
 def insert_app(_mydict):
-    print("insert_app start, mydict is:")    
-    print(_mydict)    
-    print(request.get_json)
+    print("insert_app start, mydict is:")
     connection = MongoClient(MONGODB_HOST, MONGODB_PORT)
     collection = connection[DB_NAME_ED][COLLECTION_NAME_ED]
-
-
-    mydict = { "appName": "benny", 
-    "servers": "benny1 ,benny2 ,benny3 , benny4" ,
-    "developer" : "Benny",
-    "manager" : "Benny"
-    }
-
+    mydict = json.loads(_mydict)
     x = collection.insert_one(mydict)
 
-    print("insert_app finish")    
+    print("insert_app finish",x)
+
 
 def update_app(id):
     connection = MongoClient(MONGODB_HOST, MONGODB_PORT)

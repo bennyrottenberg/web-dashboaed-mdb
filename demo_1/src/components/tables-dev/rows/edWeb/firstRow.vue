@@ -11,16 +11,36 @@
               </div>
             </b-col>
             -->
+
             <b-col>
                <div class="text-center">
-                
-                <button type="button" class="btn bg-transparent btn-btn-link" v-on:click="sortByElement('Date')">Application <i class="fa fa-sort"></i></button>
+                <button type="button" class="btn bg-transparent btn-btn-link">App Name </button>
                 <DropdownMenu-search :filterByApp="filterByApp"></DropdownMenu-search>
               </div>
             </b-col>
             <b-col>
                <div class="text-center">
-                <button type="button" class="btn bg-transparent btn-btn-link" v-on:click="sortByElement('job')">Servers <i class="fa fa-sort"></i></button>
+                <button type="button" class="btn bg-transparent btn-btn-link" >Servers</button>
+              </div>
+            </b-col>
+            <b-col>
+               <div class="text-center">
+                <button type="button" class="btn bg-transparent btn-btn-link" >Developer </button>
+                
+              </div>
+            </b-col>
+            <b-col>
+               <div class="text-center">
+                <button type="button" class="btn bg-transparent btn-btn-link" >Maneger </button>
+              </div>
+            </b-col>
+
+            <b-col>
+               <div class="text-center">
+                <button type="button" class="btn bg-transparent btn-btn-link" >More</button>
+              </div>
+            </b-col>
+            
                 <!--<button><i class="ti-filter" v-on:click="filterByFiled('1','2')"></i>  </button>-->
                 
 
@@ -41,24 +61,9 @@
                 <b-dropdown-item><button type="button" class="btn bg-transparent btn-btn-link" v-on:click="filterByFiled('upstream job','Android app git')" >Android testApp Monitor</button></b-dropdown-item>
               </b-dropdown>
             -->
-              </div>
-            </b-col>
-            <b-col>
-               <div class="text-center">
-                <button type="button" class="btn bg-transparent btn-btn-link" v-on:click="sortByElement('User id')">developer <i class="fa fa-sort"></i></button>
-                
-              </div>
-            </b-col>
-            <b-col>
-               <div class="text-center">
-                <button type="button" class="btn bg-transparent btn-btn-link" v-on:click="sortByElement('ott version')">maneger <i class="fa fa-sort"></i></button>
-              </div>
-            </b-col>
-            <b-col>
-               <div class="text-center">
-                <button type="button" class="btn bg-transparent btn-btn-link" >More</button>
-              </div>
-            </b-col>
+              
+            
+            
         
           </b-row>
           <hr class="my-3"/>
