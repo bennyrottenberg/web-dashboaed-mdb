@@ -43,8 +43,16 @@
       -->
         <b-col>
           <div class="text-center">
-          <parameters-window :row="row"></parameters-window>
+            <div style="padding-bottom:10px" >
+              <b-button  variant="primary" v-on:click="updateApplicationComponentisVisible =!updateApplicationComponentisVisible ;changeUpdateNewAppButtonTxt()" class="btn btn-fw">{{ addAppButtonTxt }}</b-button>
+            </div>
             
+            
+            <Transition name="slide-fade">
+              <div v-show="updateApplicationComponentisVisible" :class="updateApplicationComponentisVisible ? 'updateApplicationVisible' : 'updateApplicationInvisible'  " class="add-new-application" >
+                <update-application :newAplicationReturnValues = "newAplicationReturnValues"></update-application>
+              </div>
+            </Transition>  
           </div>
         </b-col>
       </b-row>
@@ -57,11 +65,13 @@
 <script>
 //alertWithImage.vue
  import parametersWindow from '@/components/alerts/sweet-alert/parametersWindow.vue'  
+ import updateApplication from '@/pages/forms/update-application.vue' 
  
 
   export default {
    components: {
-      "parameters-window": parametersWindow,
+     // "parameters-window": parametersWindow,
+     "update-application": updateApplication,
       
     },
     
@@ -78,11 +88,26 @@
       allParams: 'none',
       PlatformStatusToolTip:'',
       PlatformsWithStatusColor:'',
-      allPlatforms: [] //platform that come from 
+      allPlatforms: [], //platform that come from ,
+      addAppButtonTxt :"Update",
+      updateApplicationComponentisVisible: false,
+
     }
   
     },
     methods: {
+      changeUpdateNewAppButtonTxt()
+      {
+        if(this.addAppButtonTxt != "Cancel")
+        {
+          this.addAppButtonTxt = "Cancel"
+        }
+        else
+        {
+          this.addAppButtonTxt = "Add new"
+        }
+        
+      },
 
       editServers()
       {

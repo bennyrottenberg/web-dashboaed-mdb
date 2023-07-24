@@ -370,7 +370,7 @@ created() {
   
   this.loadMongoDBCollection_for_all_run_tab('education/get_all_apps_data?rowNum=50')
   //this.interval = setInterval(() => {this.loadMongoDBCollection('education/get_all_apps_data?rowNum=50');console.log("load db");}, 600000);
-  this.interval = setInterval(() => {this.loadMongoDBCollection_for_all_run_tab('education/get_all_apps_data?rowNum=50');console.log("load education mongo db");}, 600000);
+  this.interval = setInterval(() => {this.loadMongoDBCollection_for_all_run_tab('education/get_all_apps_data?rowNum=50');console.log("load education mongodb");}, 600000);
 },
 
 computed: {
