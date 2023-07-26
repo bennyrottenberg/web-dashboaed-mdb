@@ -1,7 +1,6 @@
 <template>
   <div class="main-div">
     <h4 class="text-dark">ED IIS Web application</h4>
-     
     <div class="col-sm-12 grid-margin stretch-card" >
       <div class="card-card" style="width: 150rem; ">
         <div class="card-body">    
