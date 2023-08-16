@@ -20,7 +20,9 @@
      <b-col class="text-center"><span v-html="servers"></span></b-col>
      <b-col class="text-center">{{this.row['developer']}}</b-col>
      <b-col class="text-center">{{this.row['manager']}}</b-col>
-    
+
+
+  
    
      
 
@@ -58,11 +60,11 @@
 
    
   <b-col>
-    <!--
-<b-button v-on:click="onClickUpdateAppButton" variant="success" class="mr-2">Open</b-button>
-    -->
     
-    <updateAppWindow-Window></updateAppWindow-Window>
+<b-button  variant="primary" v-on:click="updateApplicationComponentisVisible =!updateApplicationComponentisVisible ;changeUpdateAppButtonTxt()" class="btn btn-fw">{{ updateAppButtonTxt }}</b-button>
+    
+    
+   
      </b-col>
    
  
@@ -72,6 +74,19 @@
    
 
    </b-row>
+  
+
+   
+   
+
+   <Transition name="slide-fade">
+              <div v-show="updateApplicationComponentisVisible" :class="updateApplicationComponentisVisible ? 'updatelicationVisible' : 'updatelicationInvisible'  " class="update-application" >
+                <updateAppWindow-Window :newAplicationReturnValues = "newAplicationReturnValues"></updateAppWindow-Window>
+              </div>
+
+            </Transition>  
+
+  
        </div>
      </div>
    </div>
@@ -81,7 +96,8 @@
 </template>
 
 <script>
-import updateAppWindow from '@/components/alerts/sweet-alert/updateAppWindow.vue'
+//import updateAppWindow from '@/components/alerts/sweet-alert/updateAppWindow.vue'
+import updateAppWindow from '@/pages/forms/update-application.vue' 
   
 export default {
 components: {
@@ -105,7 +121,8 @@ components: {
    allPlatforms: [], //platform that come from ,
    addAppButtonTxt :"Update",
    updateApplicationComponentisVisible: false,
-   IsRowVisible : true
+   IsRowVisible : true,
+   updateAppButtonTxt :"Update",
 
  }
 
@@ -147,7 +164,19 @@ components: {
        }
 
      
-   }
+   },
+   changeUpdateAppButtonTxt()
+      {
+        if(this.updateAppButtonTxt != "Cancel")
+        {
+          this.updateAppButtonTxt = "Cancel"
+        }
+        else
+        {
+          this.updateAppButtonTxt = "Update"
+        }
+      },
+   
 
 
  },

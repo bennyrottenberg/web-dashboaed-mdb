@@ -17,6 +17,17 @@
                 </p>
                 <form class="forms-sample">
                   
+                  <b-form-group label="AppName" >
+                    <b-form-input type="AppName"  required v-model="appName">
+                      <p>
+                {{ appName }}
+               
+              </p>
+                    </b-form-input>
+                  </b-form-group>
+                  <b-form-group label="Comment" >
+                    <b-form-input type="Comment"  placeholder="Type your comment" required v-model="Comment"></b-form-input>
+                  </b-form-group>
                   <b-form-group label="Comment"  label-for="input2">
                     <b-form-input type="Comment" id="input2" placeholder="Type your comment"></b-form-input>
                   </b-form-group>
@@ -27,6 +38,10 @@
                   <b-button variant="light">Cancel</b-button>
                 </form>
               </div>
+              <p>
+                {{ appName }}
+                {{ Comment }}
+              </p>
             </div>
           </div>
 
@@ -53,6 +68,8 @@ export default {
   data () {
     return {
       
+      appName:"gfghf",
+      Comment:""
 
     }
   }

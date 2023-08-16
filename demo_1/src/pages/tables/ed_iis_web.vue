@@ -26,6 +26,19 @@
 
             </Transition>  
 
+
+            <div style="padding-bottom:10px" >
+              <b-button  variant="primary" v-on:click="updateApplicationComponentisVisible =!updateApplicationComponentisVisible ;changeUpdateAppButtonTxt()" class="btn btn-fw">{{ updateAppButtonTxt }}</b-button>
+            </div>
+            
+            
+            <Transition name="slide-fade">
+              <div v-show="updateApplicationComponentisVisible" :class="updateApplicationComponentisVisible ? 'updatelicationVisible' : 'updatelicationInvisible'  " class="update-application" >
+                <updateAppWindow-Window :newAplicationReturnValues = "newAplicationReturnValues"></updateAppWindow-Window>
+              </div>
+
+            </Transition>  
+
               <!--Numbers of runs 
                <b-dropdown id="ottsg_all_runs_dd" size="sm" :text=this.data_json_for_all_runs_tab.length.toString() variant="outline-primary">        
               <b-dropdown-item v-for="(component, i) in this.rowsPerPage" :key="'component'+i"> 
@@ -42,7 +55,12 @@
                 <div>
                   <first-row :filterByApp="filterByApp"></first-row> 
                   <!--<first-row :sortByElement="sortByElement" :filterByFiled="filterByFiled"></first-row> -->
-              <build-all-row2 v-for="row in data_json_for_all_runs_tab" :key="row._id.$oid" :row="row"></build-all-row2>  
+              
+              <build-all-row2 v-for="row in data_json_for_all_runs_tab" :key="row._id.$oid" :row="row">
+                
+              </build-all-row2>
+              
+              
                 </div>   
                       
               
@@ -118,6 +136,9 @@ import row2 from '../../components/tables-dev/rows/edWeb/row2.vue'
 import firstRow from '../../components/tables-dev/rows/edWeb/firstRow.vue'
 import firstRowNoFilter from '../../components/tables-dev/rows/edWeb/firstRowNoFilter.vue'
 import addNewApplication from '@/pages/forms/add-new-application.vue' 
+//import updateAppWindow from '@/components/alerts/sweet-alert/updateAppWindow.vue'
+import updateAppWindow from '@/pages/forms/update-application.vue' 
+
 
 
   export default {
@@ -126,6 +147,7 @@ import addNewApplication from '@/pages/forms/add-new-application.vue'
       "first-row": firstRow,
       "first-row-no-filter": firstRowNoFilter,
       "add-new-application": addNewApplication,
+      "updateAppWindow-Window": updateAppWindow
     },
     data() {
       return {
@@ -135,9 +157,11 @@ import addNewApplication from '@/pages/forms/add-new-application.vue'
        datajson: [],
        originalJson_for_all_run_tab: [],
        data_json_for_all_runs_tab: [],
-       addAppButtonTxt :"Add new",
+       addAppButtonTxt :"Add new", 
+       updateAppButtonTxt :"Update",
 
        addApplicationComponentisVisible: false,
+       updateApplicationComponentisVisible: false,
        
       }
     },
@@ -203,6 +227,17 @@ import addNewApplication from '@/pages/forms/add-new-application.vue'
           this.addAppButtonTxt = "Add new"
         }
         
+      },
+      changeUpdateAppButtonTxt()
+      {
+        if(this.updateAppButtonTxt != "Cancel")
+        {
+          this.updateAppButtonTxt = "Cancel"
+        }
+        else
+        {
+          this.updateAppButtonTxt = "Update"
+        }
       },
       pageNumToDisplayForAllRunsTab(Num)
       {
@@ -434,6 +469,24 @@ computed: {
         
     }
     .add-new-application
+    {
+   
+
+
+
+      transition: all 0.5s ease;
+      
+      overflow: hidden ;
+    
+      
+
+      
+   
+
+     
+      
+    }
+    .update-application
     {
    
 
