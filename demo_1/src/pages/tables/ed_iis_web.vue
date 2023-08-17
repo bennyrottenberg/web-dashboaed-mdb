@@ -34,7 +34,7 @@
             
             <Transition name="slide-fade">
               <div v-show="updateApplicationComponentisVisible" :class="updateApplicationComponentisVisible ? 'updatelicationVisible' : 'updatelicationInvisible'  " class="update-application" >
-                <updateAppWindow-Window :newAplicationReturnValues = "newAplicationReturnValues"></updateAppWindow-Window>
+                <updateAppWindow-Window :updateAplicationReturnValues = "updateAplicationReturnValues"></updateAppWindow-Window>
               </div>
 
             </Transition>  
@@ -199,6 +199,15 @@ import updateAppWindow from '@/pages/forms/update-application.vue'
 
         this.addApplicationComponentisVisible =!this.addApplicationComponentisVisible //add his at the end
         this.addAppButtonTxt = "Add new"
+
+
+      },
+      updateAplicationReturnValues(ApplicationName,comment){
+        console.log(ApplicationName,comment)
+        //this.editDataBeforeInsertsToDB(ApplicationName,Servers,Developer,manager,Enviroment)
+
+        //this.addApplicationComponentisVisible =!this.addApplicationComponentisVisible //add his at the end
+        //this.addAppButtonTxt = "Add new"
 
 
       },

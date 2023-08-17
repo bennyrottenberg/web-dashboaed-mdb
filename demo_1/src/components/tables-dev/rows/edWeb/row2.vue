@@ -81,7 +81,7 @@
 
    <Transition name="slide-fade">
               <div v-show="updateApplicationComponentisVisible" :class="updateApplicationComponentisVisible ? 'updatelicationVisible' : 'updatelicationInvisible'  " class="update-application" >
-                <updateAppWindow-Window :newAplicationReturnValues = "newAplicationReturnValues"></updateAppWindow-Window>
+                <updateAppWindow-Window :updateAplicationReturnValues = "updateAplicationReturnValues" :appName = "this.row.appName"></updateAppWindow-Window>
               </div>
 
             </Transition>  
@@ -152,6 +152,15 @@ components: {
      }
      
    },
+   updateAplicationReturnValues(ApplicationName,comment){
+        console.log(ApplicationName,comment)
+        this.addCommentPrepare(ApplicationName,comment)
+
+        this.updateApplicationComponentisVisible =!this.updateApplicationComponentisVisible //add his at the end
+        this.updateAppButtonTxt = "Update"
+
+
+      },
 
    editServers()
    {
@@ -161,10 +170,43 @@ components: {
        {
          console.log('in loop')
          this.servers += `<a class="text-dark" href="${_servers[i]}" target="_blank">${_servers[i]}</a><br>`;
-       }
-
-     
+       }    
    },
+   async addComment(mydict)
+      {
+        const requestOptions = {
+        method: "PATCH",
+    
+       //headers: { "Access-Control-Allow-Origin": "*" },
+        body: JSON.stringify(mydict)
+        
+      };
+  
+        console.log(" call api: http://localhost:5000/api/education/add_comment/ with params: ",requestOptions)
+        const response = await fetch("http://localhost:5000/api/education/add_comment/"+JSON.stringify(mydict), requestOptions);
+
+        
+
+
+
+
+
+       this.refreshData()
+
+
+      },
+   addCommentPrepare(ApplicationName,comment)
+   {
+    var mydict = 
+        { 
+          "appName": ApplicationName, 
+          "Comment": comment ,
+          "_id": this.row['_id']
+        }
+        this.addComment(mydict)
+   },
+  
+        
    changeUpdateAppButtonTxt()
       {
         if(this.updateAppButtonTxt != "Cancel")
@@ -175,6 +217,10 @@ components: {
         {
           this.updateAppButtonTxt = "Update"
         }
+      },
+      newAplicationReturnValues()
+      {
+        console.log("newAplicationReturnValues start")
       },
    
 

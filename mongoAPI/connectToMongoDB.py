@@ -121,6 +121,31 @@ def update_app(id):
             mimetype = "application.json"
         )
 
+def add_comment(mydict):
+    print("add_comment started")
+    connection = MongoClient(MONGODB_HOST, MONGODB_PORT)
+    collection = connection[DB_NAME_ED][COLLECTION_NAME_ED]
+    #try:
+    #    dbResponse = collection.update_one(
+    #    {"_id": ObjectId("64be467db57400d3da147ffc")},
+    #    {"$set":{"appName":request.form["Comment"]}}
+    #    )
+    #   
+    #    #for attr in dir(dbResponse):
+    #    #    print (f"*******{attr}*******")
+#
+    #except Exception as ex:
+    #    print("*******************************************")
+    #    print(ex)
+    #    print("*******************************************")
+    #    return Response(
+    #        response = json.dumps(
+    #            {"message":"error"}
+    #        ),
+    #        status=500,
+    #        mimetype = "application.json"
+    #    )        
+#
 
 
 

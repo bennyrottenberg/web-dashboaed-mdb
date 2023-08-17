@@ -24,7 +24,7 @@
                   <b-form-group label="Message"  label-for="input10">
                 <b-form-textarea id="input10" placeholder="Message" :rows="3" :max-rows="6"></b-form-textarea>
               </b-form-group>
-                  <b-button variant="success" class="mr-2">Submit</b-button>
+                  <b-button variant="success" class="mr-2" >Submit</b-button>
                 </form>
               </div>
             </div>

@@ -57,6 +57,14 @@ def update_app(id):
     response.headers.add("Access-Control-Allow-Origin", "*")
     return response
 
+@app.route('/api/education/add_comment/<mydict>')
+def add_comment(mydict):
+    print("add_comment in main started")
+   
+    response = Response(connectToMongoDB.add_comment(mydict) ,mimetype='application/json')
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
+
 
 @app.route('/api/education/insert_app/<mydict>' , methods=["POST"])
 def insert_app(mydict):
