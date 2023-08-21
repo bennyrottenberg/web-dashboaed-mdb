@@ -175,33 +175,34 @@ components: {
    async addComment(mydict)
       {
         const requestOptions = {
-        method: "PATCH",
-    
-       //headers: { "Access-Control-Allow-Origin": "*" },
+        method: "POST",
         body: JSON.stringify(mydict)
-        
       };
-  
-        console.log(" call api: http://localhost:5000/api/education/add_comment/ with params: ",requestOptions)
+        console.log(" call api: http://localhost:5000/api/education/add_comment/ with params benben : ",requestOptions)
         const response = await fetch("http://localhost:5000/api/education/add_comment/"+JSON.stringify(mydict), requestOptions);
 
-        
-
-
-
-
-
-       this.refreshData()
-
+       //this.refreshData()
 
       },
    addCommentPrepare(ApplicationName,comment)
-   {
+   {var d = new Date()
+   let day = d.getDate();
+   let month = d.getMonth();
+   let year = d.getFullYear();
+   let minuts = d.getMinutes();
+   let hours = d.getHours() ;
+   let sec = d.getSeconds() ;
+   console.log(hours)
+   var dateVar = `${day}_${month}_${year}_${hours}_${minuts}_${sec}`
+   
+   console.log(dateVar)
+    
     var mydict = 
         { 
           "appName": ApplicationName, 
           "Comment": comment ,
-          "_id": this.row['_id']
+          "_id": this.row['_id']["$oid"],
+          "date" : dateVar
         }
         this.addComment(mydict)
    },

@@ -166,29 +166,21 @@ import updateAppWindow from '@/pages/forms/update-application.vue'
       }
     },
     methods: {
+
+
       async insertApplication(mydict)
       {
         const requestOptions = {
         method: "POST",
-    
        //headers: { "Access-Control-Allow-Origin": "*" },
         body: JSON.stringify(mydict)
-        
       };
-  
         console.log(" call api: http://localhost:5000/api/education/insert_app/ with params: ",requestOptions)
         const response = await fetch("http://localhost:5000/api/education/insert_app/"+JSON.stringify(mydict), requestOptions);
-
-        
-
-
-
-
-
        this.refreshData()
-
-
       },
+
+
       refreshData()
       {
         this.loadMongoDBCollection_for_all_run_tab('education/get_all_apps_data?rowNum=50')
@@ -220,7 +212,8 @@ import updateAppWindow from '@/pages/forms/update-application.vue'
           "servers": Servers ,
           "developer" : Developer,
           "manager" : manager,
-          "Enviroment": Enviroment
+          "Enviroment": Enviroment,
+          "comments" : {}
         }
         this.insertApplication(mydict)
 

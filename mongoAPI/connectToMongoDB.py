@@ -125,29 +125,16 @@ def add_comment(mydict):
     print("add_comment started")
     connection = MongoClient(MONGODB_HOST, MONGODB_PORT)
     collection = connection[DB_NAME_ED][COLLECTION_NAME_ED]
-    #try:
-    #    dbResponse = collection.update_one(
-    #    {"_id": ObjectId("64be467db57400d3da147ffc")},
-    #    {"$set":{"appName":request.form["Comment"]}}
-    #    )
-    #   
-    #    #for attr in dir(dbResponse):
-    #    #    print (f"*******{attr}*******")
-#
-    #except Exception as ex:
-    #    print("*******************************************")
-    #    print(ex)
-    #    print("*******************************************")
-    #    return Response(
-    #        response = json.dumps(
-    #            {"message":"error"}
-    #        ),
-    #        status=500,
-    #        mimetype = "application.json"
-    #    )        
-#
+    data = json.loads(mydict)
 
+    id = data["_id"]
+    dateVar =data["date"]
+    comment = data["Comment"]
 
+    dbResponse = collection.update_one(
+        {"_id": ObjectId(id)},
+        {"$set":{"comment":{dateVar : comment}}}
+        )
 
     
 

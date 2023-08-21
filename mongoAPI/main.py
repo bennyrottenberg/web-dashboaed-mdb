@@ -57,7 +57,7 @@ def update_app(id):
     response.headers.add("Access-Control-Allow-Origin", "*")
     return response
 
-@app.route('/api/education/add_comment/<mydict>')
+@app.route('/api/education/add_comment/<mydict>' , methods=["POST"])
 def add_comment(mydict):
     print("add_comment in main started")
    
