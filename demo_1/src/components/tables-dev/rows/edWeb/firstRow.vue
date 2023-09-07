@@ -31,7 +31,7 @@
             </b-col>
             <b-col>
                <div class="text-center">
-                <button type="button" class="btn bg-transparent btn-btn-link" >Maneger </button>
+                <button type="button" class="btn bg-transparent btn-btn-link" >Last Update </button>
               </div>
             </b-col>
 

@@ -19,7 +19,7 @@
      
      <b-col class="text-center"><span v-html="servers"></span></b-col>
      <b-col class="text-center">{{this.row['developer']}}</b-col>
-     <b-col class="text-center">{{this.row['manager']}}</b-col>
+     <b-col class="text-center">{{this.row['comments']}}</b-col>
 
 
   
@@ -62,6 +62,7 @@
   <b-col>
     
 <b-button  variant="primary" v-on:click="updateApplicationComponentisVisible =!updateApplicationComponentisVisible ;changeUpdateAppButtonTxt()" class="btn btn-fw">{{ updateAppButtonTxt }}</b-button>
+
     
     
    
@@ -163,7 +164,14 @@ components: {
       },
 
    editServers()
-   {
+   { 
+    
+    var as = JSON.parse(this.row['comments']);
+    console.log("as is:" )
+    console.log(as )
+   
+
+   
      var _servers = this.row['servers'].split(',')
 
      for (let i = 0; i < _servers.length; i++) 
@@ -172,6 +180,7 @@ components: {
          this.servers += `<a class="text-dark" href="${_servers[i]}" target="_blank">${_servers[i]}</a><br>`;
        }    
    },
+   
    async addComment(mydict)
       {
         const requestOptions = {

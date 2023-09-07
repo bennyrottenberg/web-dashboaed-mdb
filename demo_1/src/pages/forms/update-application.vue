@@ -31,7 +31,7 @@
                 <b-form-textarea id="input10" placeholder="Message" :rows="3" :max-rows="6" required v-model="Comment"></b-form-textarea>
               </b-form-group>
                   <b-button variant="success" class="mr-2" v-on:click="updateAplicationReturnValues(appName,Comment)">Submit</b-button>
-                  <b-button variant="light">Cancel</b-button>
+                  <!--<b-button variant="light">Cancel</b-button>-->
                 </form>
               </div>
               <p>
