@@ -19,7 +19,7 @@
      
      <b-col class="text-center"><span v-html="servers"></span></b-col>
      <b-col class="text-center">{{this.row['developer']}}</b-col>
-     <b-col class="text-center">{{this.row['comments']}}</b-col>
+     <b-col class="text-center">{{this.row.lastUpdate.data}}</b-col>
 
 
   
@@ -124,6 +124,11 @@ components: {
    updateApplicationComponentisVisible: false,
    IsRowVisible : true,
    updateAppButtonTxt :"Update",
+   commentArray: [],
+   lastUpdate:{
+    date: "",
+    "comment": ""
+   }
 
  }
 
@@ -164,11 +169,12 @@ components: {
       },
 
    editServers()
-   { 
+   {
+    console.log("editServers start:" )
+
     
-    var as = JSON.parse(this.row['comments']);
-    console.log("as is:" )
-    console.log(as )
+    
+    
    
 
    
@@ -180,7 +186,50 @@ components: {
          this.servers += `<a class="text-dark" href="${_servers[i]}" target="_blank">${_servers[i]}</a><br>`;
        }    
    },
-   
+   parseComments()
+   {
+    if (this.row.appName == "ZacCore")
+    {
+      
+      var data = this.row['comments']
+      const _commentArray = [];
+
+      for (const element of data) {
+        const label = Object.keys(element)[0];
+        const value = element[label];
+
+        console.log(label )
+        console.log(value )
+        _commentArray.push({"date": label, "comment": value});
+}
+this.commentArray = _commentArray
+
+console.log("commentArray")
+console.log(this.commentArray)
+console.log("length")
+console.log(this.commentArray.length)
+var lengthmin1 = this.row['comments'].length -1
+console.log(this.commentArray[ lengthmin1]["date"])
+console.log(this.commentArray[lengthmin1]["comment"])
+
+this.lastUpdate.date = this.commentArray[ lengthmin1]["date"]
+this.lastUpdate.comment = this.commentArray[ lengthmin1]["comment"]
+
+      console.log("data is:" )
+      console.log(data )
+
+      var length = this.row['comments'].length
+      console.log("length is:" )
+      console.log(length )
+
+
+
+
+
+
+
+    } 
+   },
    async addComment(mydict)
       {
         const requestOptions = {
@@ -238,6 +287,7 @@ components: {
  },
  mounted() {
    this.editServers()
+   this.parseComments()
  },
 
 }
