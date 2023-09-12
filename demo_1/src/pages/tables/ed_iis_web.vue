@@ -56,7 +56,7 @@
                   <first-row :filterByApp="filterByApp"></first-row> 
                   <!--<first-row :sortByElement="sortByElement" :filterByFiled="filterByFiled"></first-row> -->
               
-              <build-all-row2 v-for="row in data_json_for_all_runs_tab" :key="row._id.$oid" :row="row">
+              <build-all-row2 v-for="row in data_json_for_all_runs_tab" :key="row._id.$oid" :row="row" :refreshData = "refreshData">
                 
               </build-all-row2>
               
@@ -183,6 +183,7 @@ import updateAppWindow from '@/pages/forms/update-application.vue'
 
       refreshData()
       {
+        console.log("refreshData start")
         this.loadMongoDBCollection_for_all_run_tab('education/get_all_apps_data?rowNum=50')
       },
       newAplicationReturnValues(ApplicationName,Servers,Developer,manager,Enviroment){

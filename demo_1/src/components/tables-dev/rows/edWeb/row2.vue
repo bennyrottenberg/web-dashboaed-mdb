@@ -19,7 +19,7 @@
      
      <b-col class="text-center"><span v-html="servers"></span></b-col>
      <b-col class="text-center">{{this.row['developer']}}</b-col>
-     <b-col class="text-center">{{this.row.lastUpdate.data}}</b-col>
+     <b-col class="text-center">{{this.lastUpdate.date+" "+this.lastUpdate.comment}}</b-col>
 
 
   
@@ -106,7 +106,14 @@ components: {
    
  },
  
- props: ['row','index'], 
+ props: {
+
+  refreshData: {type: Function},
+  row : {type : String},
+  index : {type : String}
+
+  
+}, 
  data() {
    
    //console.log("data started " , this.row['date'],this.row);
@@ -126,8 +133,8 @@ components: {
    updateAppButtonTxt :"Update",
    commentArray: [],
    lastUpdate:{
-    date: "",
-    "comment": ""
+    date: "benny",
+    "comment": "benny"
    }
 
  }
@@ -212,11 +219,15 @@ var lengthmin1 = this.row['comments'].length -1
 console.log(this.commentArray[ lengthmin1]["date"])
 console.log(this.commentArray[lengthmin1]["comment"])
 
-this.lastUpdate.date = this.commentArray[ lengthmin1]["date"]
+this.lastUpdate.date = this.commentArray[ lengthmin1]["date"].split(" ")[0]  //12.9.2023 10:43:0  -- > 12.9.2023
 this.lastUpdate.comment = this.commentArray[ lengthmin1]["comment"]
 
-      console.log("data is:" )
-      console.log(data )
+      console.log("date is:" )
+      console.log(this.lastUpdate.date )
+
+      console.log("comment is:" )
+      console.log(this.lastUpdate.comment  )
+
 
       var length = this.row['comments'].length
       console.log("length is:" )
@@ -239,20 +250,21 @@ this.lastUpdate.comment = this.commentArray[ lengthmin1]["comment"]
         console.log(" call api: http://localhost:5000/api/education/add_comment/ with params benben : ",requestOptions)
         const response = await fetch("http://localhost:5000/api/education/add_comment/"+JSON.stringify(mydict), requestOptions);
 
-       //this.refreshData()
+      
 
       },
    addCommentPrepare(ApplicationName,comment)
    {var d = new Date()
    let day = d.getDate();
-   let month = d.getMonth();
+   let month = d.getMonth() + 1;
    let year = d.getFullYear();
    let minuts = d.getMinutes();
    let hours = d.getHours() ;
    let sec = d.getSeconds() ;
    console.log(hours)
-   var dateVar = `${day}_${month}_${year}_${hours}_${minuts}_${sec}`
+   var dateVar = `${day}.${month}.${year} ${hours}:${minuts}:${sec}`
    
+   console.log("dateVar")
    console.log(dateVar)
     
     var mydict = 
@@ -263,6 +275,7 @@ this.lastUpdate.comment = this.commentArray[ lengthmin1]["comment"]
           "date" : dateVar
         }
         this.addComment(mydict)
+        this.refreshData()
    },
   
         
