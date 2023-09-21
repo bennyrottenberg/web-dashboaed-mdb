@@ -20,59 +20,9 @@
      <b-col class="text-center"><span v-html="servers"></span></b-col>
      <b-col class="text-center">{{this.row['developer']}}</b-col>
      <b-col class="text-center">{{this.lastUpdate.date+" "+this.lastUpdate.comment}}</b-col>
-
-
-  
-   
+     <b-col class="text-center"><b-button  variant="primary" v-on:click="updateApplicationComponentisVisible =!updateApplicationComponentisVisible ;changeUpdateAppButtonTxt()" class="btn btn-fw">{{ updateAppButtonTxt }}</b-button></b-col>
      
 
-
-
-
-
-
-
-
-<!--
-     <b-col class="text-center">{{this.row['tenant_id']}}</b-col>
-     <b-col  class="text-center" v-if ="this.row['Test Results'] == 'Passed'"> 
-           <b-button class="btn btn-gradient-success btn-rounded btn-fw">
-             <b-link class="text-white" :href="this.row['Job Url']" target="_blank">Passed</b-link>
-           </b-button>    
-     </b-col>
-     <b-col class="text-center" v-else>
-           <b-button :id="'exPopover1-'+placement+this.row.row" class="btn btn-gradient-danger btn-rounded btn-fw">
-              <b-link class="text-white" :href="this.row['Job Url']" target="_blank">Failed</b-link>
-              <b-popover :target="'exPopover1-'+placement+this.row.row" :placement="placement" title="Some tests failed" triggers="hover focus" :content="
-              `${this.PlatformStatusToolTip}`">
-             </b-popover>
-           </b-button>
-     </b-col>
-   -->
-     
-   
-
-
-
-     
-   
-
-
-   
-  <b-col>
-    
-<b-button  variant="primary" v-on:click="updateApplicationComponentisVisible =!updateApplicationComponentisVisible ;changeUpdateAppButtonTxt()" class="btn btn-fw">{{ updateAppButtonTxt }}</b-button>
-
-    
-    
-   
-     </b-col>
-   
- 
-
- 
-  
-   
 
    </b-row>
   
@@ -109,14 +59,14 @@ components: {
  props: {
 
   refreshData: {type: Function},
-  row : {type : String},
+  row : {type : Object },
   index : {type : String}
 
   
 }, 
  data() {
    
-   //console.log("data started " , this.row['date'],this.row);
+   //console.log("data started " , this.row);
    
   return {
    counter: 0,
@@ -195,27 +145,32 @@ components: {
    },
    parseComments()
    {
-    if (this.row.appName == "ZacCore")
+    var n = 1
+    if (n == 1)
     {
+      console.log("ZacCore start")
       
       var data = this.row['comments']
+      console.log("data is",data )
       const _commentArray = [];
 
       for (const element of data) {
         const label = Object.keys(element)[0];
         const value = element[label];
 
-        console.log(label )
-        console.log(value )
+        console.log("label is",label )
+        console.log("value is",value )
         _commentArray.push({"date": label, "comment": value});
 }
 this.commentArray = _commentArray
 
 console.log("commentArray")
 console.log(this.commentArray)
-console.log("length")
+console.log("length bla")
 console.log(this.commentArray.length)
 var lengthmin1 = this.row['comments'].length -1
+console.log("lengthmin1")
+console.log(lengthmin1)
 console.log(this.commentArray[ lengthmin1]["date"])
 console.log(this.commentArray[lengthmin1]["comment"])
 
@@ -254,20 +209,21 @@ this.lastUpdate.comment = this.commentArray[ lengthmin1]["comment"]
 
       },
    addCommentPrepare(ApplicationName,comment)
-   {var d = new Date()
-   let day = d.getDate();
-   let month = d.getMonth() + 1;
-   let year = d.getFullYear();
-   let minuts = d.getMinutes();
-   let hours = d.getHours() ;
-   let sec = d.getSeconds() ;
-   console.log(hours)
-   var dateVar = `${day}.${month}.${year} ${hours}:${minuts}:${sec}`
-   
-   console.log("dateVar")
-   console.log(dateVar)
+   {
+      var d = new Date()
+      let day = d.getDate();
+      let month = d.getMonth() + 1;
+      let year = d.getFullYear();
+      let minuts = d.getMinutes();
+      let hours = d.getHours() ;
+      let sec = d.getSeconds() ;
+      console.log(hours)
+      var dateVar = `${day}.${month}.${year} ${hours}:${minuts}:${sec}`
+
+      console.log("dateVar")
+      console.log(dateVar)
     
-    var mydict = 
+      var mydict = 
         { 
           "appName": ApplicationName, 
           "Comment": comment ,
@@ -276,7 +232,7 @@ this.lastUpdate.comment = this.commentArray[ lengthmin1]["comment"]
         }
         this.addComment(mydict)
         this.refreshData()
-   },
+      },
   
         
    changeUpdateAppButtonTxt()

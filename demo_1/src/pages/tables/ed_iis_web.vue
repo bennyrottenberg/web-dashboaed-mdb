@@ -207,14 +207,35 @@ import updateAppWindow from '@/pages/forms/update-application.vue'
       editDataBeforeInsertsToDB(ApplicationName,Servers,Developer,manager,Enviroment)
       {
         console.log(ApplicationName,Servers,Developer,manager,Enviroment)
+
+        var d = new Date()
+      let day = d.getDate();
+      let month = d.getMonth() + 1;
+      let year = d.getFullYear();
+      let minuts = d.getMinutes();
+      let hours = d.getHours() ;
+      let sec = d.getSeconds() ;
+      console.log(hours)
+      var dateVar = `${day}.${month}.${year} ${hours}:${minuts}:${sec}`
+      console.log("dateVar")
+      var _dateVar = dateVar.toString
+      //console.log(dateVar)
+
         var mydict = 
         { 
+          
           "appName": ApplicationName, 
           "servers": Servers ,
           "developer" : Developer,
           "manager" : manager,
           "Enviroment": Enviroment,
-          "comments" : {}
+          "comments" : [
+          {
+            
+            _dateVar : "created"
+            
+          },
+          ]
         }
         this.insertApplication(mydict)
 
@@ -380,11 +401,18 @@ import updateAppWindow from '@/pages/forms/update-application.vue'
           //item['row'] = index
           return item;
         })
+        console.log("a before slice")
+        console.log(a)
+
+
         this.data_json_for_all_runs_tab=a.slice(); 
+
+        console.log("a  () after slice        this.data_json_for_all_runs_tab=a.slice();      ")
+        console.log( this.data_json_for_all_runs_tab)
+
         //console.log("loadMongoDBCollection start datajson res is:");
         //console.log(this.datajson)
-
-        console.log(this.data_json_for_all_runs_tab)
+   
 
         //console.log("loadMongoDBCollection start originalJson res is:");
         //console.log(this.originalJson)
