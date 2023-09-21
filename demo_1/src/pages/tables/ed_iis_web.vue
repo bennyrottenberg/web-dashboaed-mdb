@@ -177,14 +177,16 @@ import updateAppWindow from '@/pages/forms/update-application.vue'
       };
         console.log(" call api: http://localhost:5000/api/education/insert_app/ with params: ",requestOptions)
         const response = await fetch("http://localhost:5000/api/education/insert_app/"+JSON.stringify(mydict), requestOptions);
-       this.refreshData()
+       this.refreshData("mainPage")
       },
 
 
-      refreshData()
+      refreshData(caller)
       {
-        console.log("refreshData start")
+        console.log("refreshData start from :",caller)
         this.loadMongoDBCollection_for_all_run_tab('education/get_all_apps_data?rowNum=50')
+        this.$forceUpdate();
+        //this.$router.go(0);
       },
       newAplicationReturnValues(ApplicationName,Servers,Developer,manager,Enviroment){
         console.log(ApplicationName,Servers,Developer,manager,Enviroment)
@@ -231,8 +233,8 @@ import updateAppWindow from '@/pages/forms/update-application.vue'
           "Enviroment": Enviroment,
           "comments" : [
           {
-            
-            _dateVar : "created"
+            "date" : dateVar,
+            "comment" : "created"
             
           },
           ]
@@ -435,7 +437,7 @@ created() {
   
   this.loadMongoDBCollection_for_all_run_tab('education/get_all_apps_data?rowNum=50')
   //this.interval = setInterval(() => {this.loadMongoDBCollection('education/get_all_apps_data?rowNum=50');console.log("load db");}, 600000);
-  this.interval = setInterval(() => {this.loadMongoDBCollection_for_all_run_tab('education/get_all_apps_data?rowNum=50');console.log("load education mongodb");}, 600000);
+  this.interval = setInterval(() => {this.loadMongoDBCollection_for_all_run_tab('education/get_all_apps_data?rowNum=50');console.log("load education mongodb");}, 60000);
 },
 
 computed: {

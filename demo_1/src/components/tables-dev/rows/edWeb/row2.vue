@@ -18,8 +18,9 @@
 
      
      <b-col class="text-center"><span v-html="servers"></span></b-col>
+     
      <b-col class="text-center">{{this.row['developer']}}</b-col>
-     <b-col class="text-center">{{this.lastUpdate.date+" "+this.lastUpdate.comment}}</b-col>
+     <b-col class="text-center">Date:&nbsp;&nbsp;&nbsp;{{this.lastUpdate.date}}<br>comment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{getLastCommentValue}}</b-col>
      <b-col class="text-center"><b-button  variant="primary" v-on:click="updateApplicationComponentisVisible =!updateApplicationComponentisVisible ;changeUpdateAppButtonTxt()" class="btn btn-fw">{{ updateAppButtonTxt }}</b-button></b-col>
      
 
@@ -155,12 +156,14 @@ components: {
       const _commentArray = [];
 
       for (const element of data) {
-        const label = Object.keys(element)[0];
-        const value = element[label];
+        const dateKey = Object.keys(element)[0];
+        const dateValue = element[dateKey];
+        console.log("dateValue is",dateValue )
+        const commentKey = Object.keys(element)[1];
+        const commentValue = element[commentKey];
+        console.log("value2 is",commentValue)
 
-        console.log("label is",label )
-        console.log("value is",value )
-        _commentArray.push({"date": label, "comment": value});
+        _commentArray.push({"date": dateValue, "comment": commentValue});
 }
 this.commentArray = _commentArray
 
@@ -171,7 +174,7 @@ console.log(this.commentArray.length)
 var lengthmin1 = this.row['comments'].length -1
 console.log("lengthmin1")
 console.log(lengthmin1)
-console.log(this.commentArray[ lengthmin1]["date"])
+console.log(this.commentArray[lengthmin1]["date"])
 console.log(this.commentArray[lengthmin1]["comment"])
 
 this.lastUpdate.date = this.commentArray[ lengthmin1]["date"].split(" ")[0]  //12.9.2023 10:43:0  -- > 12.9.2023
@@ -231,7 +234,9 @@ this.lastUpdate.comment = this.commentArray[ lengthmin1]["comment"]
           "date" : dateVar
         }
         this.addComment(mydict)
-        this.refreshData()
+        this.refreshData("row2")
+        
+        this.$router.go(0);
       },
   
         
@@ -258,6 +263,53 @@ this.lastUpdate.comment = this.commentArray[ lengthmin1]["comment"]
    this.editServers()
    this.parseComments()
  },
+ 
+ computed: {
+
+  getLastCommentValue: function()
+      {
+      //  console.log("ZacCore computed start")
+      var _data = this.row['comments']
+      //console.log("data is",data )
+      console.log("ZacCore start")
+      
+      var data = this.row['comments']
+      console.log("data is",_data )
+      const _commentArray = [];
+
+      for (const element of _data) {
+        const dateKey = Object.keys(element)[0];
+        const dateValue = element[dateKey];
+        console.log("dateValue is",dateValue )
+        const commentKey = Object.keys(element)[1];
+        const commentValue = element[commentKey];
+        console.log("value2 is",commentValue)
+
+        _commentArray.push({"date": dateValue, "comment": commentValue});
+}
+
+
+console.log("commentArray")
+console.log(this.commentArray)
+console.log("length bla")
+console.log(this.commentArray.length)
+var lengthmin1 = this.row['comments'].length -1
+console.log("lengthmin1")
+console.log(lengthmin1)
+console.log(this.commentArray[lengthmin1]["date"])
+console.log(this.commentArray[lengthmin1]["comment"])
+
+        const a  = this.commentArray[lengthmin1]["comment"]
+        return a
+      },
+      getLastCommentDate: function()
+      {
+        const a  = this.originalJson.filter((item,index) => {
+          return (item['upstream job'].toString() === 'Android Client Artifactory')
+        });
+        return a
+      },
+ }
 
 }
 </script>

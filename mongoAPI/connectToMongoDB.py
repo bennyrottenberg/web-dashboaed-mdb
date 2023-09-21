@@ -133,7 +133,11 @@ def add_comment(mydict):
 
     dbResponse = collection.update_one(
         {"_id": ObjectId(id)},
-        {"$push":{"comments":{dateVar : comment}}}
+        {"$push":{"comments":{
+            "date" : dateVar,
+            "comment" : comment
+            
+            }}}
         )
 
     
