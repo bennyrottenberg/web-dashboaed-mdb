@@ -21,7 +21,7 @@
         </form>
       </div>-->
       
-      <h4 class="text-dark">Web System menagment consul</h4>
+      <h4 class="text-dark">Web System management console</h4>
       
       
       <!--<b-navbar-nav class="navbar-nav-right ml-auto">
