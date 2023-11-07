@@ -1,3 +1,3 @@
 module.exports = { 
-  publicPath: process.env.NODE_ENV === 'production' ? '/ottguard-dashboard/' : '/' 
+  publicPath: process.env.NODE_ENV === 'production' ? '/devops-dashboard/' : '/' 
 }

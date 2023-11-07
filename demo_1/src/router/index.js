@@ -11,7 +11,7 @@ export default new Router({
   linkExactActiveClass: 'active',
   scrollBehavior: () => ({ y: 0 }),
   mode: 'history',
-  base: '/ottguard-dashboard',
+  base: '/devops-dashboard',
   routes: [
     {
       path: '/',
