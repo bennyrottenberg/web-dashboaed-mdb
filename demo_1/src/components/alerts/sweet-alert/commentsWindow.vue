@@ -8,7 +8,7 @@
           
   </section>
 <section class="parametersWindow" v-else>
-    <button class="btn btn-outline-primary btn-fw" v-on:click="showAlert" >More info</button> 
+    <button class="btn btn-outline-primary btn-fw" v-on:click="showAlert" >Show log</button> 
      
      <show-Row-Window :row="row"></show-Row-Window>
             
