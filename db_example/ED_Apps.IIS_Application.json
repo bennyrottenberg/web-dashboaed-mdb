@@ -1,21 +1,466 @@
 [{
   "_id": {
-    "$oid": "649205da2a4120e6b32abd26"
-  },
-  "appName": "Pty",
-  "servers": [
-    "iprod20121",
-    "iprod20122",
-    "10.10.10.41",
-    "10.10.10.42"
-  ],
-  "developer": "benny"
-},
-{
-  "_id": {
-    "$oid": "6492b27e2a4120e6b32abd28"
+    "$oid": "649d654ea09b89745d67e258"
   },
   "appName": "Nrs",
   "servers": "iprod20121 ,iprod20122 ,10.10.10.41",
-  "developer": "benny"
+  "developer": "אסתר מיטלמן",
+  "manager": "benny",
+  "comments": [
+    {
+      "date": "26.9.2023 10:43:32",
+      "comment": "created"
+    },
+    {
+      "date": "26.9.2023 10:44:30",
+      "comment": "קק"
+    },
+    {
+      "date": "26.9.2023 10:44:44",
+      "comment": "הוספתי אפליקיישן פול"
+    },
+    {
+      "date": "26.9.2023 10:45:8",
+      "comment": "השרת לא עבד הוספתי אפליקיישן פול נפרד"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "64acbe3c5aa350f89d372ee8"
+  },
+  "appName": "NrsWs",
+  "servers": "iprod20121 ,iprod20122 ,10.10.10.41",
+  "developer": "אסתר מיטלמן",
+  "manager": "benny",
+  "comments": [
+    {
+      "date": "26.9.2023 10:43:32",
+      "comment": "created"
+    },
+    {
+      "date": "26.9.2023 10:44:30",
+      "comment": "קק"
+    },
+    {
+      "date": "26.9.2023 10:44:44",
+      "comment": "הוספתי אפליקיישן פול"
+    },
+    {
+      "date": "26.9.2023 10:45:8",
+      "comment": "השרת לא עבד הוספתי אפליקיישן פול נפרד"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "64be467db57400d3da147ffc"
+  },
+  "appName": "nrsApi",
+  "servers": "iprod2012",
+  "developer": "אסתר",
+  "manager": "הדסה",
+  "Enviroment": "tast",
+  "comments": [
+    {
+      "date": "26.9.2023 10:43:32",
+      "comment": "created"
+    },
+    {
+      "date": "26.9.2023 10:44:30",
+      "comment": "קק"
+    },
+    {
+      "date": "26.9.2023 10:44:44",
+      "comment": "הוספתי אפליקיישן פול"
+    },
+    {
+      "date": "26.9.2023 10:45:8",
+      "comment": "השרת לא עבד הוספתי אפליקיישן פול נפרד"
+    },
+    {
+      "date": "26.9.2023 10:52:7",
+      "comment": "עשיתי ריסייקל"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "64be4696b57400d3da148000"
+  },
+  "appName": "pktNet",
+  "servers": "iprod2012",
+  "developer": "אסתר",
+  "manager": "הדסה",
+  "Enviroment": "tast",
+  "comment": [
+    {
+      "goodDate": "my comment"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "64be570efcb5eb529093263a"
+  },
+  "appName": "Ktn",
+  "servers": "itest20161",
+  "developer": "צופיה כהן",
+  "manager": "צופיה כהן",
+  "Enviroment": "test",
+  "comment": [
+    {
+      "goodDate": "my comment"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "64e35c3ec2aa8b74d7fde3bd"
+  },
+  "appName": "Hnm",
+  "servers": "idev2012",
+  "developer": "חיה הורוביץ",
+  "manager": "לא יודע",
+  "Enviroment": "Dev",
+  "comment": [
+    {
+      "22_7_2023_11_17_4": "בדיקה"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "64e46ee0549d86b0cb71cc88"
+  },
+  "appName": "BHL",
+  "servers": "iprod2016,itest2016",
+  "developer": "אלכס זילברמן",
+  "manager": "אנטון",
+  "Enviroment": "test,prod",
+  "comments": [
+    {
+      "22_7_2023_17_48_58": "Hllegfgh"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "64f0258d089725481064763c"
+  },
+  "appName": "CHS",
+  "servers": "itest2012,iprod2012",
+  "developer": "",
+  "manager": "",
+  "Enviroment": "test.prod",
+  "comments": [
+  {
+      "date": "24.01.1987",
+      "comment": "born"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "64f9b45839397d2e41c61d69"
+  },
+  "appName": "ZacCore",
+  "servers": "itest20161",
+  "developer": "",
+  "manager": "אפרת כהן",
+  "Enviroment": "test",
+  "comments": [
+    {
+      "date": "24.01.1987",
+      "comment": "born"
+    },
+    {
+      "date": "24.01.1987",
+      "comment": "born"
+    },
+    {
+      "date": "24.01.1987",
+      "comment": "born"
+    },
+    {
+      "date": "24.01.1987",
+      "comment": "born"
+    },
+    {
+      "date": "24.01.1987",
+      "comment": "born"
+    },
+    {
+      "date": "24.01.1987",
+      "comment": "born"
+    },
+    {
+      "date": "24.01.1987",
+      "comment": "born"
+    },
+    {
+      "21.9.2023 13:19:20": "יצרתי אפליקיישן פול חדש כי הישן היה תקול ככה הנראה"
+    },
+    {
+      "date": "21.9.2023 14:38:36",
+      "comment": "123"
+    },
+    {
+      "date": "21.9.2023 14:40:31",
+      "comment": "יצרתי אפליקיישן פול חדש כי הישן היה תקול ככה הנראה"
+    },
+    {
+      "date": "21.9.2023 14:41:53",
+      "comment": "יצרתי אפליקיישן פול חדש כי הישן היה תקול ci c i"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65000cef74d5af1db04e4044"
+  },
+  "appName": "KtnApi",
+  "servers": "itest20161",
+  "developer": "צופיה כהן",
+  "manager": "",
+  "Enviroment": "test",
+  "comments": [
+  {
+      "date": "24.01.1987",
+      "comment": "born"
+    }
+  ]
+},
+
+{
+  "_id": {
+    "$oid": "650bea6830412d58708355e9"
+  },
+  "appName": "EduProtal",
+  "servers": "Iprod20165,Iprod20166",
+  "developer": "Ben",
+  "manager": "Ben",
+  "Enviroment": "Prod",
+  "comments": [
+    {
+      "date": "24.01.1987",
+      "comment": "born"
+    },
+    {
+      "date": "24.01.2003",
+      "comment": "hello"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65128ba42f85f7de5d6878be"
+  },
+  "appName": "Ari",
+  "servers": "Ari",
+  "developer": "Ari",
+  "manager": "Ari",
+  "Enviroment": "Ari",
+  "comments": [
+    {
+      "date": "26.9.2023 10:43:32",
+      "comment": "created"
+    },
+    {
+      "date": "26.9.2023 10:44:30",
+      "comment": "קק"
+    },
+    {
+      "date": "26.9.2023 10:44:44",
+      "comment": "הוספתי אפליקיישן פול"
+    },
+    {
+      "date": "26.9.2023 10:45:8",
+      "comment": "השרת לא עבד הוספתי אפליקיישן פול נפרד"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6512aabf2f85f7de5d68796e"
+  },
+  "appName": "SYT",
+  "servers": "Crm2016Pfe1,Crm2016Pfe2,Crm2016Pfe3,Crm2016Pfe4",
+  "developer": "",
+  "manager": "אלעד",
+  "Enviroment": "Prod",
+  "comments": [
+    {
+      "date": "26.9.2023 12:56:15",
+      "comment": "created"
+    },
+    {
+      "date": "26.9.2023 12:57:20",
+      "comment": "Update Solution"
+    },
+    {
+      "date": "26.9.2023 12:57:42",
+      "comment": "Update Solution 2"
+    },
+    {
+      "date": "26.9.2023 12:57:47",
+      "comment": "Update Solution 3"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6549e31bbcb90cfdb71b7a52"
+  },
+  "appName": "Vtk",
+  "servers": "itest2012,idev2012,iprod2012",
+  "developer": "אורית חיון",
+  "manager": "אורית חיון",
+  "Enviroment": "All",
+  "comments": [
+    {
+      "date": "7.11.2023 9:11:23",
+      "comment": "created"
+    },
+    {
+      "date": "7.11.2023 9:11:48",
+      "comment": "Add Batch Folder to Jenkins Job"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6549e7cdbcb90cfdb71b7ac8"
+  },
+  "appName": "MztApi",
+  "servers": "idev2012",
+  "developer": "בוריס למברסקי",
+  "manager": "בוריס למברסקי",
+  "Enviroment": "dev",
+  "comments": [
+    {
+      "date": "7.11.2023 9:31:25",
+      "comment": "created"
+    },
+    {
+      "date": "7.11.2023 9:32:32",
+      "comment": "קיבלתי פניה להעביר את האפליקציה לטסט."
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "654c8a88bcb90cfdb71b9fa3"
+  },
+  "appName": "Ty2",
+  "servers": "iprod20165,iprod20165,iproddmz20165,iproddmz20166",
+  "developer": "רחל קרליבך",
+  "manager": "מירב דוד",
+  "Enviroment": "test,dev,prod",
+  "comments": [
+    {
+      "date": "9.11.2023 9:30:16",
+      "comment": "created"
+    },
+    {
+      "date": "9.11.2023 9:30:33",
+      "comment": "create backup"
+    },
+    {
+      "date": "9.11.2023 10:30:10",
+      "comment": "d"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "654c92cdbcb90cfdb71ba01a"
+  },
+  "appName": "Ty2Api",
+  "servers": "iprod20165,iprod20165, iproddmz20165, iproddmz20166",
+  "developer": "רחל קרליבך",
+  "manager": "מירב דוד",
+  "Enviroment": "prod",
+  "comments": [
+    {
+      "date": "9.11.2023 10:5:33",
+      "comment": "created"
+    },
+    {
+      "date": "9.11.2023 10:6:47",
+      "comment": "d"
+    },
+    {
+      "date": "9.11.2023 10:6:55",
+      "comment": "created backup"
+    },
+    {
+      "date": "9.11.2023 10:7:8",
+      "comment": "created backup,benben"
+    },
+    {
+      "date": "9.11.2023 10:7:34",
+      "comment": "    created backup, Benny"
+    },
+    {
+      "date": "9.11.2023 10:23:33",
+      "comment": "2"
+    },
+    {
+      "date": "9.11.2023 10:24:22",
+      "comment": "dd"
+    },
+    {
+      "date": "9.11.2023 10:24:28",
+      "comment": "dd"
+    },
+    {
+      "date": "9.11.2023 10:24:36",
+      "comment": "dd"
+    },
+    {
+      "date": "9.11.2023 10:27:50",
+      "comment": "d"
+    },
+    {
+      "date": "9.11.2023 10:29:14",
+      "comment": "ff"
+    },
+    {
+      "date": "9.11.2023 10:31:58",
+      "comment": "123 123"
+    },
+    {
+      "date": "9.11.2023 10:32:22",
+      "comment": "123 123"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "654cb881bcb90cfdb71ba33f"
+  },
+  "appName": "Tkn",
+  "servers": "idev2012,itestdmz2012",
+  "developer": "ויקטוריה לזבין",
+  "manager": "ויקטוריה לזבין",
+  "Enviroment": "dev,test,prod",
+  "comments": [
+    {
+      "date": "9.11.2023 12:46:25",
+      "comment": "created"
+    },
+    {
+      "date": "9.11.2023 12:47:27",
+      "comment": "update to  2 dll files in bin folder"
+    },
+    {
+      "date": "9.11.2023 16:20:37",
+      "comment": "Hello"
+    },
+    {
+      "date": "9.11.2023 16:20:43",
+      "comment": "update to 2 dll files in bin folder"
+    }
+  ]
 }]

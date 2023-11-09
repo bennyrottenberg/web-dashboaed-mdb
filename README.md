@@ -38,11 +38,11 @@ server {
 	root /var/www/html;
 	index index.html;
 
-	location /ottguard-dashboard {
+	location /devops-dashboard {
                 # First attempt to serve request as file, then
                 # as directory, then fall back to displaying a 404.
                 #try_files $uri $uri/ =404;
-                try_files $uri /ottguard-dashboard/index.html;
+                try_files $uri /devops-dashboard/index.html;
         }
 }
 
@@ -82,11 +82,11 @@ server {
 		# as directory, then fall back to displaying a 404.
 		try_files $uri $uri/ =404;
 	}
-        location /ottguard-dashboard {
+        location /devops-dashboard {
                 # First attempt to serve request as file, then
                 # as directory, then fall back to displaying a 404.
                 #try_files $uri $uri/ =404;
-                try_files $uri /ottguard-dashboard/index.html;
+                try_files $uri /devops-dashboard/index.html;
         }
 
 	location /api/ {

@@ -20,12 +20,26 @@
      <b-col class="text-center"><span v-html="servers"></span></b-col>
      
      <b-col class="text-center">{{this.row['developer']}}</b-col>
-     <b-col class="text-center">Date:&nbsp;&nbsp;&nbsp;{{this.lastUpdate.date}}<br>comment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{getLastCommentValue}}</b-col>
-     <b-col class="text-center"><b-button  variant="primary" v-on:click="updateApplicationComponentisVisible =!updateApplicationComponentisVisible ;changeUpdateAppButtonTxt()" class="btn btn-fw">{{ updateAppButtonTxt }}</b-button></b-col>
+    
+      <!--  <b-col class="text-center">Date:&nbsp;&nbsp;&nbsp;{{this.lastUpdate.date}}<br>comment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{this.lastUpdate.comment}}</b-col> -->
+     <b-col class="text-center">Date:&nbsp;&nbsp;&nbsp;{{getLastCommentDate}}<br>comment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{getLastCommentValue}}</b-col>
+     <b-col 
+     class="text-center"><b-button  variant="primary" v-on:click="updateApplicationComponentisVisible =!updateApplicationComponentisVisible ;changeUpdateAppButtonTxt()" class="btn btn-fw">{{ updateAppButtonTxt }}</b-button>
+     <br>
+     <br>
+     <comments-window :row="row"></comments-window>
+    </b-col>
+     
+     
      
 
 
    </b-row>
+
+
+
+
+
   
 
    
@@ -50,10 +64,13 @@
 <script>
 //import updateAppWindow from '@/components/alerts/sweet-alert/updateAppWindow.vue'
 import updateAppWindow from '@/pages/forms/update-application.vue' 
+import commentsWindow from '@/components/alerts/sweet-alert/commentsWindow.vue' 
+
   
 export default {
 components: {
-  "updateAppWindow-Window": updateAppWindow
+  "updateAppWindow-Window": updateAppWindow,
+  "comments-window": commentsWindow
    
  },
  
@@ -82,11 +99,12 @@ components: {
    updateApplicationComponentisVisible: false,
    IsRowVisible : true,
    updateAppButtonTxt :"Update",
-   commentArray: [],
-   lastUpdate:{
-    date: "benny",
-    "comment": "benny"
-   }
+   commentArray: [], // not in use now
+   lastUpdate:{  // not in use now
+    date: "benny", // not in use now
+    "comment": "benny" // not in use now
+   },  // not in use now
+   
 
  }
 
@@ -149,7 +167,7 @@ components: {
     var n = 1
     if (n == 1)
     {
-      console.log("ZacCore start")
+      console.log("parseComments start")
       
       var data = this.row['comments']
       console.log("data is",data )
@@ -171,7 +189,11 @@ console.log("commentArray")
 console.log(this.commentArray)
 console.log("length bla")
 console.log(this.commentArray.length)
-var lengthmin1 = this.row['comments'].length -1
+
+if(this.commentArray.length > 0)
+{
+  console.log("in if this.commentArray.length")
+  var lengthmin1 = this.row['comments'].length -1
 console.log("lengthmin1")
 console.log(lengthmin1)
 console.log(this.commentArray[lengthmin1]["date"])
@@ -192,6 +214,11 @@ this.lastUpdate.comment = this.commentArray[ lengthmin1]["comment"]
       console.log(length )
 
 
+
+
+
+
+}
 
 
 
@@ -261,19 +288,16 @@ this.lastUpdate.comment = this.commentArray[ lengthmin1]["comment"]
  },
  mounted() {
    this.editServers()
-   this.parseComments()
+  // this.parseComments()
  },
  
  computed: {
 
   getLastCommentValue: function()
       {
-      //  console.log("ZacCore computed start")
-      var _data = this.row['comments']
-      //console.log("data is",data )
-      console.log("ZacCore start")
       
-      var data = this.row['comments']
+      console.log("getLastCommentValue in computed section start")
+      var _data = this.row['comments']
       console.log("data is",_data )
       const _commentArray = [];
 
@@ -288,25 +312,50 @@ this.lastUpdate.comment = this.commentArray[ lengthmin1]["comment"]
         _commentArray.push({"date": dateValue, "comment": commentValue});
 }
 
+        //this.commentArray = _commentArray
+        console.log("_commentArray")
+        console.log(_commentArray)
+        console.log("length ")
+        console.log(_commentArray.length)
+        var lengthmin1 = this.row['comments'].length -1
+        console.log("_lengthmin1")
+        console.log(lengthmin1)
+        console.log(_commentArray[lengthmin1]["date"])
+        console.log(_commentArray[lengthmin1]["comment"])
 
-console.log("commentArray")
-console.log(this.commentArray)
-console.log("length bla")
-console.log(this.commentArray.length)
-var lengthmin1 = this.row['comments'].length -1
-console.log("lengthmin1")
-console.log(lengthmin1)
-console.log(this.commentArray[lengthmin1]["date"])
-console.log(this.commentArray[lengthmin1]["comment"])
-
-        const a  = this.commentArray[lengthmin1]["comment"]
+        const a  = _commentArray[lengthmin1]["comment"]
         return a
       },
       getLastCommentDate: function()
       {
-        const a  = this.originalJson.filter((item,index) => {
-          return (item['upstream job'].toString() === 'Android Client Artifactory')
-        });
+        console.log("getLastCommentValue in computed section start")
+      var _data = this.row['comments']
+      console.log("data is",_data )
+      const _commentArray = [];
+
+      for (const element of _data) {
+        const dateKey = Object.keys(element)[0];
+        const dateValue = element[dateKey];
+        console.log("dateValue is",dateValue )
+        const commentKey = Object.keys(element)[1];
+        const commentValue = element[commentKey];
+        console.log("value2 is",commentValue)
+
+        _commentArray.push({"date": dateValue, "comment": commentValue});
+}
+
+        //this.commentArray = _commentArray
+        console.log("_commentArray")
+        console.log(_commentArray)
+        console.log("length ")
+        console.log(_commentArray.length)
+        var lengthmin1 = this.row['comments'].length -1
+        console.log("_lengthmin1")
+        console.log(lengthmin1)
+        console.log(_commentArray[lengthmin1]["date"])
+        console.log(_commentArray[lengthmin1]["comment"])
+
+        const a  = _commentArray[lengthmin1]["date"]
         return a
       },
  }

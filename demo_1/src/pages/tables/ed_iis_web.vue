@@ -27,17 +27,7 @@
             </Transition>  
 
 
-            <div style="padding-bottom:10px" >
-              <b-button  variant="primary" v-on:click="updateApplicationComponentisVisible =!updateApplicationComponentisVisible ;changeUpdateAppButtonTxt()" class="btn btn-fw">{{ updateAppButtonTxt }}</b-button>
-            </div>
-            
-            
-            <Transition name="slide-fade">
-              <div v-show="updateApplicationComponentisVisible" :class="updateApplicationComponentisVisible ? 'updatelicationVisible' : 'updatelicationInvisible'  " class="update-application" >
-                <updateAppWindow-Window :updateAplicationReturnValues = "updateAplicationReturnValues"></updateAppWindow-Window>
-              </div>
 
-            </Transition>  
 
               <!--Numbers of runs 
                <b-dropdown id="ottsg_all_runs_dd" size="sm" :text=this.data_json_for_all_runs_tab.length.toString() variant="outline-primary">        
@@ -137,7 +127,7 @@ import firstRow from '../../components/tables-dev/rows/edWeb/firstRow.vue'
 import firstRowNoFilter from '../../components/tables-dev/rows/edWeb/firstRowNoFilter.vue'
 import addNewApplication from '@/pages/forms/add-new-application.vue' 
 //import updateAppWindow from '@/components/alerts/sweet-alert/updateAppWindow.vue'
-import updateAppWindow from '@/pages/forms/update-application.vue' 
+//import updateAppWindow from '@/pages/forms/update-application.vue' 
 
 
 
@@ -147,7 +137,7 @@ import updateAppWindow from '@/pages/forms/update-application.vue'
       "first-row": firstRow,
       "first-row-no-filter": firstRowNoFilter,
       "add-new-application": addNewApplication,
-      "updateAppWindow-Window": updateAppWindow
+     // "updateAppWindow-Window": updateAppWindow
     },
     data() {
       return {
