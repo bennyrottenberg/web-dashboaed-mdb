@@ -7,26 +7,22 @@ import json
 from flask import Response
 from flask import request
 
-f = open('config/configOTTSGLocal.json',)
-configFile = json.load(f)
-MONGODB_HOST = configFile['MONGODB_HOST']
-MONGODB_PORT = configFile['MONGODB_PORT']
-DB_NAME = configFile['DB_NAME']
-COLLECTION_NAME = configFile['COLLECTION_NAME']
-f.close()
-
-f = open('config/configMDRMLocal.json',)
-configFile = json.load(f)
-DB_NAME_MDRM = configFile['DB_NAME']
-COLLECTION_NAME_MDRM_ALENTE = configFile['COLLECTION_NAME']
-f.close()
 
 
-f = open('config/configEDIISWebApps.json',)
-configFile = json.load(f)
-DB_NAME_ED= configFile['DB_NAME']
-COLLECTION_NAME_ED = configFile['COLLECTION_NAME']
-f.close()
+def get_db_collection():
+    f = open('config/configEDIISWebApps.json',)
+    configFile = json.load(f)
+    MONGODB_HOST = configFile['MONGODB_HOST']
+    MONGODB_PORT = configFile['MONGODB_PORT']
+    DB_NAME_ED= configFile['DB_NAME']
+    COLLECTION_NAME_ED = configFile['COLLECTION_NAME']
+    f.close()
+
+    connection = MongoClient(MONGODB_HOST, MONGODB_PORT ,username='root', 
+                         password='pass',
+                        authSource="admin")
+    collection = connection[DB_NAME_ED][COLLECTION_NAME_ED]
+    return [connection,collection]
 
 def editResult(_projects,option='reverse'):
     _json_projects = []
@@ -80,32 +76,32 @@ def getLatestDataMDRM(rowNum):
 
 
 def getLatestDataED(rowNum):
-    connection = MongoClient(MONGODB_HOST, MONGODB_PORT)
-    collection = connection[DB_NAME_ED][COLLECTION_NAME_ED]
-    projects = collection.find().sort([('$natural', -1)]).limit(rowNum)
+    collection = get_db_collection()
+    projects = collection[1].find().sort([('$natural', -1)]).limit(rowNum)
     json_projects = editResult(projects,'reverse')
-    connection.close()
+    #connection.close()
+    collection[0].close
     return json_projects 
 
 def insert_app(_mydict):
     print("insert_app start, mydict is:")
-    connection = MongoClient(MONGODB_HOST, MONGODB_PORT)
-    collection = connection[DB_NAME_ED][COLLECTION_NAME_ED]
+    collection = get_db_collection()
     mydict = json.loads(_mydict)
-    x = collection.insert_one(mydict)
+    x = collection[1].insert_one(mydict)
+    collection[0].close
 
     print("insert_app finish",x)
 
 
 def update_app(id):
-    connection = MongoClient(MONGODB_HOST, MONGODB_PORT)
-    collection = connection[DB_NAME_ED][COLLECTION_NAME_ED]
+    collection = get_db_collection()
     try:
-        dbResponse = collection.update_one(
+        dbResponse = collection[1].update_one(
         {"_id": ObjectId(id)},
         {"$set":{"appName":request.form["appName"]}}
         )
-       
+        collection[0].close
+    
         #for attr in dir(dbResponse):
         #    print (f"*******{attr}*******")
 
@@ -123,15 +119,14 @@ def update_app(id):
 
 def add_comment(mydict):
     print("add_comment started")
-    connection = MongoClient(MONGODB_HOST, MONGODB_PORT)
-    collection = connection[DB_NAME_ED][COLLECTION_NAME_ED]
+    collection = get_db_collection()
     data = json.loads(mydict)
 
     id = data["_id"]
     dateVar =data["date"]
     comment = data["Comment"]
 
-    dbResponse = collection.update_one(
+    dbResponse = collection[1].update_one(
         {"_id": ObjectId(id)},
         {"$push":{"comments":{
             "date" : dateVar,
@@ -139,6 +134,8 @@ def add_comment(mydict):
             
             }}}
         )
+
+    collection[0].close    
 
     
 

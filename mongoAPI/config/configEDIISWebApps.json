@@ -1,5 +1,5 @@
 {
-  "MONGODB_HOST" : "localhost",
+  "MONGODB_HOST" : "test_mongodb",
   "MONGODB_PORT" : 27017,
   "DB_NAME" : "ED_Apps",
   "COLLECTION_NAME" : "IIS_Application"

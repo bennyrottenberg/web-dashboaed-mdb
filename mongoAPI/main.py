@@ -5,10 +5,15 @@ from flask import Response
 from flask import request
 from flask_cors import CORS,cross_origin
 
-app = Flask('helloworld')
+app = Flask('helloWorld')
 
 # Decorator defines a route
 # http://localhost:5000/
+
+@app.route('/')
+def benny():
+    return jsonify({ 'text': 'benny was here!' })
+
 @app.route('/helloWorld')
 def index():
     return jsonify({ 'text': 'Hello World!' })
@@ -78,4 +83,4 @@ def insert_app(mydict):
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0")
+    app.run(host="0.0.0.0", port=5000)
