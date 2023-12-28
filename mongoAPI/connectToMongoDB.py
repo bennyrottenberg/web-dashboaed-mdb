@@ -9,8 +9,8 @@ from flask import request
 
 
 
-def get_db_collection():
-    f = open('config/configEDIISWebApps.json',)
+def get_db_collection(conf_file):
+    f = open('config/'+conf_file)
     configFile = json.load(f)
     MONGODB_HOST = configFile['MONGODB_HOST']
     MONGODB_PORT = configFile['MONGODB_PORT']
@@ -18,9 +18,15 @@ def get_db_collection():
     COLLECTION_NAME_ED = configFile['COLLECTION_NAME']
     f.close()
 
-    connection = MongoClient(MONGODB_HOST, MONGODB_PORT ,username='root', 
+    if(conf_file == 'configEDIISWebApps.json'):
+        connection = MongoClient(MONGODB_HOST, MONGODB_PORT,username='root', 
                          password='pass',
                         authSource="admin")
+    else:
+        connection = MongoClient(MONGODB_HOST, MONGODB_PORT)
+
+
+     
     collection = connection[DB_NAME_ED][COLLECTION_NAME_ED]
     return [connection,collection]
 
@@ -53,21 +59,17 @@ def getDatasMDRM():
     return json_projects    
 
 def getLatestDataOTTGUARD(rowNum):
-    connection = MongoClient(MONGODB_HOST, MONGODB_PORT)
-    print(f"MONGODB_HOST: {MONGODB_HOST}")
-    print(f"MONGODB_PORT: {MONGODB_PORT}")
-    print(f"DB_NAME: {DB_NAME}")
-    print(f"COLLECTION_NAME: {COLLECTION_NAME}")
+    
 
-    collection = connection[DB_NAME][COLLECTION_NAME]
-    projects = collection.find().sort([('$natural', -1)]).limit(rowNum)
+    collection = get_db_collection('configOTTSGLocal.json')
+    projects = collection[1].find().sort([('$natural', -1)]).limit(rowNum)
     json_projects = editResult(projects,'reverse')
-    connection.close()
+    collection[0].close()
     return json_projects  
 
 def getLatestDataMDRM(rowNum):
     connection = MongoClient(MONGODB_HOST, MONGODB_PORT)
-    collection = connection[DB_NAME_MDRM][COLLECTION_NAME_MDRM_ALENTE]
+    collection = get_db_collection()
     projects = collection.find().sort([('$natural', -1)]).limit(rowNum)
     json_projects = editResult(projects,'reverse')
     connection.close()
@@ -76,7 +78,7 @@ def getLatestDataMDRM(rowNum):
 
 
 def getLatestDataED(rowNum):
-    collection = get_db_collection()
+    collection = get_db_collection('configEDIISWebApps.json')
     projects = collection[1].find().sort([('$natural', -1)]).limit(rowNum)
     json_projects = editResult(projects,'reverse')
     #connection.close()
@@ -85,7 +87,7 @@ def getLatestDataED(rowNum):
 
 def insert_app(_mydict):
     print("insert_app start, mydict is:")
-    collection = get_db_collection()
+    collection = get_db_collection('configEDIISWebApps.json')
     mydict = json.loads(_mydict)
     x = collection[1].insert_one(mydict)
     collection[0].close
@@ -94,7 +96,7 @@ def insert_app(_mydict):
 
 
 def update_app(id):
-    collection = get_db_collection()
+    collection = get_db_collection('configEDIISWebApps.json')
     try:
         dbResponse = collection[1].update_one(
         {"_id": ObjectId(id)},
@@ -119,7 +121,7 @@ def update_app(id):
 
 def add_comment(mydict):
     print("add_comment started")
-    collection = get_db_collection()
+    collection = get_db_collection('configEDIISWebApps.json')
     data = json.loads(mydict)
 
     id = data["_id"]
