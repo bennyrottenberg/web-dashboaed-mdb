@@ -56,7 +56,7 @@
             selecteItem(user)
             {
              this.selectedItem = user.appName
-             console.log("benben")
+             console.log("benben in dropdown menu")
              this.isVisible = false
             }
         },

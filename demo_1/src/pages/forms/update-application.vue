@@ -13,14 +13,14 @@
               <div class="card-body">
                 <h4 class="card-title">Update Aplication</h4>
                 <p class="card-description">
-                  What did you do ? asdasdasdasdasdasdasdasd
+                  What did you do ? 
                 </p>
                 <form class="forms-sample">
                   
-                  <b-form-group label="AppName" >
-                    <b-form-input  required v-model="appName">
+                  <b-form-group label=" rowData.appName" >
+                    <b-form-input  required v-model=" rowData.appName">
                       <p>
-                {{ appName }}
+                {{ rowData['appName'] }}
                
               </p>
                     </b-form-input>
@@ -30,7 +30,7 @@
                   <b-form-group label="Comment"  label-for="input10">
                 <b-form-textarea id="input10" placeholder="Message" :rows="3" :max-rows="6" required v-model="Comment"></b-form-textarea>
               </b-form-group>
-                  <b-button variant="success" class="mr-2" v-on:click="updateAplicationReturnValues(appName,Comment)">Submit</b-button>
+                  <b-button variant="success" class="mr-2" v-on:click="updateAplicationReturnValues( rowData['appName'],Comment)">Submit</b-button>
                   <!--<b-button variant="light">Cancel</b-button>-->
                 </form>
               </div>
@@ -63,7 +63,7 @@ export default {
 
   props: {
     updateAplicationReturnValues: {type: Function},
-    appName : {type : String}
+    rowData : {type : Object}
       
     },
  

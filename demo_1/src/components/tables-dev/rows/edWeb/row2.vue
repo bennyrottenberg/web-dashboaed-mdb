@@ -47,7 +47,7 @@
 
    <Transition name="slide-fade">
               <div v-show="updateApplicationComponentisVisible" :class="updateApplicationComponentisVisible ? 'updatelicationVisible' : 'updatelicationInvisible'  " class="update-application" >
-                <updateAppWindow-Window :updateAplicationReturnValues = "updateAplicationReturnValues" :appName = "this.row.appName"></updateAppWindow-Window>
+                <updateAppWindow-Window :updateAplicationReturnValues = "updateAplicationReturnValues" :rowData = "this.row"></updateAppWindow-Window>
               </div>
 
             </Transition>  
@@ -135,6 +135,8 @@ components: {
      
    },
    updateAplicationReturnValues(ApplicationName,comment){
+
+    console.log("updateAplicationReturnValues start ==========================================================================")
         console.log(ApplicationName,comment)
         this.addCommentPrepare(ApplicationName,comment)
 
@@ -148,9 +150,31 @@ components: {
    {
     console.log("editServers start:" )
 
+    var servers_urls = 
+    {
+      "iprod20121":"iprod2012lb",
+      "iprod20122":"iprod2012lb",
+      "iprod2012":"iprod2012lb",
+      "iprod20165":"iprod2016lb",
+      "itest20121":"itest20121",
+      "iprod2016":"iprod2016lb",
+      "iprod20166":"iprod2016ld",
+      "iproddmz20165":"apps4.education.gov.il",
+      "iproddmz2016":"apps4.education.gov.il",
+      "iproddmz1" : "apps4.education.gov.il",
+      "iproddmz2" : "apps4.education.gov.il",
+      "iproddmz" : "apps4.education.gov.il",
+
+      "idev2012" :"idev2012" ,
+      "idev2016" :"idev20161" ,
+      "idev20161" :"idev20161" ,
+
+  
+   
+    }
     
-    
-    
+    console.log(servers_urls['iprod20165'])
+    console.log(servers_urls['iproddmz20165'])
    
 
    
@@ -159,7 +183,7 @@ components: {
      for (let i = 0; i < _servers.length; i++) 
        {
          console.log('in loop')
-         this.servers += `<a class="text-dark" href="${_servers[i]}" target="_blank">${_servers[i]}</a><br>`;
+         this.servers += `<a class="text-dark" href="http://${servers_urls[_servers[i].trim()]}/${this.row['appName']}" target="_blank">${_servers[i]}</a><br>`;
        }    
    },
    parseComments()
@@ -228,6 +252,7 @@ this.lastUpdate.comment = this.commentArray[ lengthmin1]["comment"]
    },
    async addComment(mydict)
       {
+
         const requestOptions = {
         method: "POST",
         body: JSON.stringify(mydict)
@@ -247,11 +272,11 @@ this.lastUpdate.comment = this.commentArray[ lengthmin1]["comment"]
       let minuts = d.getMinutes();
       let hours = d.getHours() ;
       let sec = d.getSeconds() ;
-      console.log(hours)
+      //console.log(hours)
       var dateVar = `${day}.${month}.${year} ${hours}:${minuts}:${sec}`
 
-      console.log("dateVar")
-      console.log(dateVar)
+      //console.log("dateVar")
+      //console.log(dateVar)
     
       var mydict = 
         { 
@@ -261,7 +286,7 @@ this.lastUpdate.comment = this.commentArray[ lengthmin1]["comment"]
           "date" : dateVar
         }
         this.addComment(mydict)
-        this.refreshData("row2")
+        //this.refreshData("row2")
         
         this.$router.go(0);
       },

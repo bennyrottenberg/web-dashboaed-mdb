@@ -43,9 +43,10 @@ export default {
     {
       console.log("parseComments start")
       
-      var data = this.row['comments']
+      var data = this.row['comments'].reverse()
+      
       console.log("data is",data )
-      const _commentArray = [];
+     //const _commentArray = [];
 
       for (const element of data) {
         const dateKey = Object.keys(element)[0];
@@ -55,7 +56,7 @@ export default {
         const commentValue = element[commentKey];
         console.log("value2 is",commentValue)
 
-        _commentArray.push({"date": dateValue, "comment": commentValue});
+        //_commentArray.push({"date": dateValue, "comment": commentValue});
 
 
         var comment = 
@@ -72,7 +73,10 @@ export default {
 
 }
 
-   }},
+   }
+   this.commentParameters
+  
+  },
     adjustParametersForLogs()
     {
       var comment = 

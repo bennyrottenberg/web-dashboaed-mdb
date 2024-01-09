@@ -57,7 +57,7 @@
             </b-tab>
             <b-tab>
               <template slot="title">
-                <i class="mdi mdi-weather-night"></i> Nightly
+                <i class="mdi mdi-weather-night"></i> 2012
               </template>
                 <div>
                   <first-row-no-filter> </first-row-no-filter> 
@@ -66,7 +66,7 @@
             </b-tab>
             <b-tab>
               <template slot="title">
-                <i class="icon-settings "></i> R&D
+                <i class="icon-settings "></i> 2016
               </template>
                 <div>
                   <first-row-no-filter> </first-row-no-filter> 
@@ -75,7 +75,7 @@
             </b-tab>
             <b-tab>
               <template slot="title">
-                 <i class="ti-android"></i>Android Client change
+                 <i class="ti-android"></i>2022
               </template>
               <div>
                   <first-row-no-filter> </first-row-no-filter> 
@@ -85,7 +85,7 @@
             </b-tab>
             <b-tab>
               <template slot="title">
-                <i class="mdi mdi-android-studio"></i>  Android App change
+                <i class="mdi mdi-android-studio"></i>  Batch
               </template>
               <div>
                   <first-row-no-filter> </first-row-no-filter> 
@@ -95,7 +95,7 @@
             </b-tab>
             <b-tab>
               <template slot="title">
-                <i class="ti-world"></i>  Web App change
+                <i class="ti-world"></i>  Stage
               </template>
               <div>
                   <first-row-no-filter> </first-row-no-filter>  
@@ -105,7 +105,7 @@
             </b-tab>
             <b-tab>
               <template slot="title">
-                <i class="fa fa-reorder"></i> HE change
+                <i class="fa fa-reorder"></i> Crm
               </template>
               <div>
                   <first-row-no-filter> </first-row-no-filter> 
