@@ -47,7 +47,7 @@
 
    <Transition name="slide-fade">
               <div v-show="updateApplicationComponentisVisible" :class="updateApplicationComponentisVisible ? 'updatelicationVisible' : 'updatelicationInvisible'  " class="update-application" >
-                <updateAppWindow-Window :updateAplicationReturnValues = "updateAplicationReturnValues" :rowData = "this.row"></updateAppWindow-Window>
+                <updateAppWindow-Window :addNewComment = "addNewComment" :editRowData = "editRowData" :rowData = "this.row"></updateAppWindow-Window>
               </div>
 
             </Transition>  
@@ -134,9 +134,30 @@ components: {
      }
      
    },
-   updateAplicationReturnValues(ApplicationName,comment){
+   editRowData(RowData){
 
-    console.log("updateAplicationReturnValues start ==========================================================================")
+    console.log("editRowData start ==========================================================================")
+    console.log(RowData)
+    var mydict = {
+      "_id": RowData['_id']["$oid"],
+      "appName":RowData["appName"],
+      "servers":RowData["servers"],
+      "developer":RowData["developer"],
+      "manager":RowData["manager"],
+      "Enviroment":RowData["Enviroment"]
+        
+    }
+    this.editRowDataApi(mydict)
+
+    this.updateApplicationComponentisVisible =!this.updateApplicationComponentisVisible //add his at the end
+    this.updateAppButtonTxt = "Update"
+
+
+  },
+
+   addNewComment(ApplicationName,comment){
+
+    console.log("addNewComment start ==========================================================================")
         console.log(ApplicationName,comment)
         this.addCommentPrepare(ApplicationName,comment)
 
@@ -250,6 +271,7 @@ this.lastUpdate.comment = this.commentArray[ lengthmin1]["comment"]
 
     } 
    },
+   ///api/education/add_comment/
    async addComment(mydict)
       {
 
@@ -263,6 +285,22 @@ this.lastUpdate.comment = this.commentArray[ lengthmin1]["comment"]
       
 
       },
+
+      async editRowDataApi(mydict)
+      {
+
+        const requestOptions = {
+        method: "POST",  
+        body: JSON.stringify(mydict)
+      };
+        console.log(" call api: http://localhost:5000/api/education/edit_document/ with params benben : ",requestOptions)
+        const response = await fetch("http://localhost:5000/api/education/edit_document/"+JSON.stringify(mydict), requestOptions);
+
+      
+
+      },
+
+
    addCommentPrepare(ApplicationName,comment)
    {
       var d = new Date()

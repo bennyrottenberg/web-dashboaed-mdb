@@ -187,7 +187,7 @@ import addNewApplication from '@/pages/forms/add-new-application.vue'
 
 
       },
-      updateAplicationReturnValues(ApplicationName,comment){
+      addNewComment(ApplicationName,comment){
         console.log(ApplicationName,comment)
         //this.editDataBeforeInsertsToDB(ApplicationName,Servers,Developer,manager,Enviroment)
 

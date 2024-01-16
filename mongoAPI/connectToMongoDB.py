@@ -78,7 +78,7 @@ def getLatestDataMDRM(rowNum):
 
 
 def getLatestDataED(rowNum):
-    collection = get_db_collection('configEDIISWebApps.json')
+    collection = get_db_collection('configEDIISWebAppsLocal.json')
     projects = collection[1].find().sort([('$natural', -1)]).limit(rowNum)
     json_projects = editResult(projects,'reverse')
     #connection.close()
@@ -87,7 +87,7 @@ def getLatestDataED(rowNum):
 
 def insert_app(_mydict):
     print("insert_app start, mydict is:")
-    collection = get_db_collection('configEDIISWebApps.json')
+    collection = get_db_collection('configEDIISWebAppsLocal.json')
     mydict = json.loads(_mydict)
     x = collection[1].insert_one(mydict)
     collection[0].close
@@ -95,8 +95,40 @@ def insert_app(_mydict):
     print("insert_app finish",x)
 
 
+def edit_document(mydict):
+    print("edit_document start ...")
+    print("mydict:",mydict)
+    collection = get_db_collection('configEDIISWebAppsLocal.json')
+    print(collection)
+    print(collection)
+    data = json.loads(mydict)
+
+    
+    
+    appName = data["appName"]
+    print(appName,id)
+
+    dbResponse = collection[1].update_one(
+       {"_id": ObjectId(data["_id"])},
+        {"$set":{"appName":data["appName"]}},
+        #{"$set":{"servers":data["servers"]}},
+        #{"$set":{"developer":data["developer"]}}
+        #{"$set":{"manager":data["manager"]}},
+        #{"$set":{"Enviroment":data["Enviroment"]}}
+        
+        )
+
+
+
+ 
+
+    collection[0].close
+    return {}    
+
+
+
 def update_app(id):
-    collection = get_db_collection('configEDIISWebApps.json')
+    collection = get_db_collection('configEDIISWebAppsLocal.json')
     try:
         dbResponse = collection[1].update_one(
         {"_id": ObjectId(id)},
@@ -121,7 +153,9 @@ def update_app(id):
 
 def add_comment(mydict):
     print("add_comment started")
-    collection = get_db_collection('configEDIISWebApps.json')
+    collection = get_db_collection('configEDIISWebAppsLocal.json')
+    print("mydict:",mydict)
+    print(collection)
     data = json.loads(mydict)
 
     id = data["_id"]
