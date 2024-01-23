@@ -110,7 +110,18 @@ def edit_document(mydict):
 
     dbResponse = collection[1].update_one(
        {"_id": ObjectId(data["_id"])},
-        {"$set":{"appName":data["appName"]}},
+        {"$set":{
+        "appName":data["appName"],
+        "developer":data["developer"],
+        "servers":data["servers"],
+        "manager":data["manager"],
+        "Enviroment":data["Enviroment"]
+        
+        
+        
+        
+        }},
+        
         #{"$set":{"servers":data["servers"]}},
         #{"$set":{"developer":data["developer"]}}
         #{"$set":{"manager":data["manager"]}},
