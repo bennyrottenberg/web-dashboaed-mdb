@@ -5,13 +5,22 @@
       <nav aria-label="breadcrumb">
       </nav>
     </div>
-    <div class="row">
-      <div class="col-md-6 d-flex align-items-stretch grid-margin">
+
+    <div class="card-body" >    
+          <b-tabs class="tab-solid tab-solid-primary">
+            
+            <b-tab>
+              <template slot="title">
+                <i class="mdi mdi-wechat"></i> Comments
+              </template>
+                <div>
+                  <div class="col-md-6 d-flex align-items-stretch grid-margin">
         <div class="row flex-grow">
           <div class="col-12 grid-margin">
-            <div class="card">
+            <div class="p-3 mb-2 bg-light text-dark">
+              <div class="card">
               <div class="card-body">
-                <h4 class="card-title">Update Aplication</h4>
+                <h4 class="card-title">Write you comment</h4>
                 <p class="card-description">
                   What did you do ?
                 </p>
@@ -34,6 +43,7 @@
                   <!--<b-button variant="light">Cancel</b-button>-->
                 </form>
               </div>
+            </div>
               <p>
               </p>
             </div>
@@ -45,10 +55,16 @@
           
         </div>
       </div>
-
-      <div class="col-md-6 d-flex align-items-stretch grid-margin">
+                </div>
+            </b-tab>
+            <b-tab>
+              <template slot="title">
+                <i class="icon-pencil"></i> Edit application
+              </template>
+              <div class="col-md-6 d-flex align-items-stretch grid-margin">
         <div class="row flex-grow">
           <div class="col-12 grid-margin">
+            <div class="p-3 mb-2 bg-light text-dark">
             <div class="card">
               <div class="card-body">
                 <h4 class="card-title">Edit Aplication</h4>
@@ -112,6 +128,7 @@
               </p>
             </div>
           </div>
+          </div>
 
           
 
@@ -119,6 +136,17 @@
           
         </div>
       </div>
+      </b-tab>
+            
+      </b-tabs>  
+        </div>
+
+
+
+    <div class="row">
+
+
+
 
 
     </div>
