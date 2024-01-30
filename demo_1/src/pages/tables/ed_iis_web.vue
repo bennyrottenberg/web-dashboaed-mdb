@@ -66,13 +66,24 @@
             </b-tab>
             <b-tab>
               <template slot="title">
-                <i class="icon-settings "></i> 2016
+                <i class="icon-settings "></i> Dev
+              </template>
+                <div>
+                  <first-row :filterByApp="filterByApp"></first-row> 
+                  <build-all-row2 v-for="(row,i) in devApps" :key="'row'+i" :row="row" :index="i"></build-all-row2>  
+                </div>
+            </b-tab>
+
+            <b-tab>
+              <template slot="title">
+                <i class="icon-settings "></i> Net
               </template>
                 <div>
                   <first-row-no-filter> </first-row-no-filter> 
-                  <build-all-row2 v-for="(row,i) in RAndD" :key="'row'+i" :row="row" :index="i"></build-all-row2>  
+                  <build-all-row2 v-for="(row,i) in netApps" :key="'row'+i" :row="row" :index="i"></build-all-row2>  
                 </div>
             </b-tab>
+
             <b-tab>
               <template slot="title">
                  <i class="ti-android"></i>2022
@@ -178,9 +189,9 @@ import addNewApplication from '@/pages/forms/add-new-application.vue'
         this.$forceUpdate();
         //this.$router.go(0);
       },
-      newAplicationReturnValues(ApplicationName,Servers,Developer,manager,Enviroment){
-        console.log(ApplicationName,Servers,Developer,manager,Enviroment)
-        this.editDataBeforeInsertsToDB(ApplicationName,Servers,Developer,manager,Enviroment)
+      newAplicationReturnValues(ApplicationName,Servers,Developer,manager,enviroment){
+        console.log(ApplicationName,Servers,Developer,manager,enviroment)
+        this.editDataBeforeInsertsToDB(ApplicationName,Servers,Developer,manager,enviroment)
 
         this.addApplicationComponentisVisible =!this.addApplicationComponentisVisible //add his at the end
         this.addAppButtonTxt = "Add new"
@@ -189,16 +200,16 @@ import addNewApplication from '@/pages/forms/add-new-application.vue'
       },
       addNewComment(ApplicationName,comment){
         console.log(ApplicationName,comment)
-        //this.editDataBeforeInsertsToDB(ApplicationName,Servers,Developer,manager,Enviroment)
+        //this.editDataBeforeInsertsToDB(ApplicationName,Servers,Developer,manager,enviroment)
 
         //this.addApplicationComponentisVisible =!this.addApplicationComponentisVisible //add his at the end
         //this.addAppButtonTxt = "Add new"
 
 
       },
-      editDataBeforeInsertsToDB(ApplicationName,Servers,Developer,manager,Enviroment)
+      editDataBeforeInsertsToDB(ApplicationName,Servers,Developer,manager,enviroment)
       {
-        console.log(ApplicationName,Servers,Developer,manager,Enviroment)
+        console.log(ApplicationName,Servers,Developer,manager,enviroment)
 
         var d = new Date()
       let day = d.getDate();
@@ -220,7 +231,7 @@ import addNewApplication from '@/pages/forms/add-new-application.vue'
           "servers": Servers ,
           "developer" : Developer,
           "manager" : manager,
-          "Enviroment": Enviroment,
+          "enviroment": enviroment,
           "comments" : [
           {
             "date" : dateVar,
@@ -422,12 +433,14 @@ mounted(){
 //this.loadMongoDBCollection('education/get_all_apps_data?rowNum=50')
 },
 created() {
-  setTimeout(() => { console.log("wait before load more records"); }, 5000);
-  this.loadMongoDBCollection('education/get_all_apps_data?rowNum=50',this.loadMongoDBCollection_callback())
+  
+  //this.loadMongoDBCollection('education/get_all_apps_data?rowNum=50',this.loadMongoDBCollection_callback())
   
   this.loadMongoDBCollection_for_all_run_tab('education/get_all_apps_data?rowNum=50')
+  setTimeout(() => { console.log("wait before load more records"); }, 20000);
+  this.loadMongoDBCollection_for_all_run_tab('education/get_all_apps_data?rowNum=2000')
   //this.interval = setInterval(() => {this.loadMongoDBCollection('education/get_all_apps_data?rowNum=50');console.log("load db");}, 600000);
-  this.interval = setInterval(() => {this.loadMongoDBCollection_for_all_run_tab('education/get_all_apps_data?rowNum=50');console.log("load education mongodb");}, 60000);
+  //this.interval = setInterval(() => {this.loadMongoDBCollection_for_all_run_tab('education/get_all_apps_data?rowNum=2000');console.log("load education mongodb");}, 1200000);
 },
 
 computed: {
@@ -459,6 +472,21 @@ computed: {
         });
         return a
       },
+      netApps: function()
+      {
+        const a  = this.originalJson_for_all_run_tab.filter((item,index) => {
+          return (item['appName'].toString().includes("Net"))
+        });
+        return a
+      },
+      devApps: function()
+      {
+        const a  = this.originalJson_for_all_run_tab.filter((item,index) => {
+          return (item['servers'].toString().includes("dev"))
+        });
+        return a
+      },
+      
       RAndD: function()
       {
         const a  = this.originalJson.filter((item,index) => {

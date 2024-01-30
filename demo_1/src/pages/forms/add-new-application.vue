@@ -32,11 +32,11 @@
                   <b-form-group label="manager"  label-for="input4">
                     <b-form-input placeholder="" required v-model="manager"></b-form-input>
                   </b-form-group>
-                  <b-form-group label="Enviroment"  label-for="input5">
-                    <b-form-input  placeholder="test,dev,prod" required v-model="Enviroment"></b-form-input>
+                  <b-form-group label="enviroment"  label-for="input5">
+                    <b-form-input  placeholder="test,dev,prod" required v-model="enviroment"></b-form-input>
                   </b-form-group>
 
-                  <b-button  variant="success" class="mr-2" v-on:click="newAplicationReturnValues(ApplicationName,Servers,Developer,manager,Enviroment)" >Submit</b-button>
+                  <b-button  variant="success" class="mr-2" v-on:click="newAplicationReturnValues(ApplicationName,Servers,Developer,manager,enviroment)" >Submit</b-button>
                   <!--<b-button variant="light">Cancel</b-button>-->
                 </form>
               </div>
@@ -62,7 +62,7 @@ export default {
       Servers : '',
       Developer : '',
       manager : '',
-      Enviroment : ''
+      enviroment : ''
      
     }
   },

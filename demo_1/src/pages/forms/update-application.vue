@@ -111,8 +111,8 @@
                       </b-form-group>    
                       
                       
-                      <b-form-group label=" Enviroment" >
-                    <b-form-input  required v-model=" rowData.Enviroment">
+                      <b-form-group label=" enviroment" >
+                    <b-form-input  required v-model=" rowData.enviroment">
                       <p>
                 {{ rowData['appName'] }}
                
