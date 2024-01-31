@@ -21,8 +21,9 @@
      
      <b-col class="text-center">{{this.row['developer']}}</b-col>
     
-      <!--  <b-col class="text-center">Date:&nbsp;&nbsp;&nbsp;{{this.lastUpdate.date}}<br>comment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{this.lastUpdate.comment}}</b-col> -->
+    <!--<b-col class="text-center">Date:&nbsp;&nbsp;&nbsp;{{this.lastUpdate.date}}<br>comment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{this.lastUpdate.comment}}</b-col>-->
      <b-col class="text-center">Date:&nbsp;&nbsp;&nbsp;{{getLastCommentDate}}<br>comment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{getLastCommentValue}}</b-col>
+     
      <b-col 
      class="text-center"><b-button  variant="primary" v-on:click="updateApplicationComponentisVisible =!updateApplicationComponentisVisible ;changeUpdateAppButtonTxt()" class="btn btn-fw">{{ updateAppButtonTxt }}</b-button>
      <br>
@@ -78,7 +79,7 @@ components: {
 
   refreshData: {type: Function},
   row : {type : Object },
-  index : {type : String}
+  index : {type : Number}
 
   
 }, 
@@ -144,7 +145,7 @@ components: {
       "servers":RowData["servers"],
       "developer":RowData["developer"],
       "manager":RowData["manager"],
-      "Enviroment":RowData["Enviroment"]
+      "enviroment":RowData["enviroment"]
         
     }
     this.editRowDataApi(mydict)
