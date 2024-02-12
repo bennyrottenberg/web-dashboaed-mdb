@@ -20,16 +20,24 @@
      <b-col class="text-center"><span v-html="servers"></span></b-col>
      
      <b-col class="text-center">{{this.row['developer']}}</b-col>
+
+     <b-col class="text-center">{{this.row['appNameHeb']}}</b-col>
+
+
+
+
+
     
     <!--<b-col class="text-center">Date:&nbsp;&nbsp;&nbsp;{{this.lastUpdate.date}}<br>comment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{this.lastUpdate.comment}}</b-col>-->
-     <b-col class="text-center">Date:&nbsp;&nbsp;&nbsp;{{getLastCommentDate}}<br>comment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{getLastCommentValue}}</b-col>
      
-     <b-col 
+    <!-- <b-col 
      class="text-center"><b-button  variant="primary" v-on:click="updateApplicationComponentisVisible =!updateApplicationComponentisVisible ;changeUpdateAppButtonTxt()" class="btn btn-fw">{{ updateAppButtonTxt }}</b-button>
      <br>
      <br>
      <comments-window :row="row"></comments-window>
     </b-col>
+  -->
+     
      
      
      
@@ -63,15 +71,14 @@
 </template>
 
 <script>
-//import updateAppWindow from '@/components/alerts/sweet-alert/updateAppWindow.vue'
-import updateAppWindow from '@/pages/forms/update-application.vue' 
-import commentsWindow from '@/components/alerts/sweet-alert/commentsWindow.vue' 
 
-  
+//import updateAppWindow from '@/pages/forms/update-application.vue' 
+//import commentsWindow from '@/components/alerts/sweet-alert/commentsWindow.vue' 
 export default {
-components: {
-  "updateAppWindow-Window": updateAppWindow,
-  "comments-window": commentsWindow
+  
+  components: {
+  //"updateAppWindow-Window": updateAppWindow,
+  //"comments-window": commentsWindow
    
  },
  
@@ -142,12 +149,10 @@ components: {
     var mydict = {
       "_id": RowData['_id']["$oid"],
       "appName":RowData["appName"],
-      "appNameHeb":RowData["appNameHeb"],
       "servers":RowData["servers"],
       "developer":RowData["developer"],
       "manager":RowData["manager"],
       "enviroment":RowData["enviroment"]
-      
         
     }
     this.editRowDataApi(mydict)
@@ -172,7 +177,7 @@ components: {
 
    editServers()
    {
-    console.log("editServers start:" )
+    //console.log("editServers start:" )
 
     var servers_urls = 
     {
@@ -190,6 +195,7 @@ components: {
       "iproddmz" : "apps4.education.gov.il",
 
       "idev2012" :"idev2012" ,
+      "idev20121" :"idev20121" ,
       "idev2016" :"idev20161" ,
       "idev20161" :"idev20161" ,
 
@@ -197,8 +203,8 @@ components: {
    
     }
     
-    console.log(servers_urls['iprod20165'])
-    console.log(servers_urls['iproddmz20165'])
+    //console.log(servers_urls['iprod20165'])
+    //console.log(servers_urls['iproddmz20165'])
    
 
    
@@ -206,7 +212,7 @@ components: {
 
      for (let i = 0; i < _servers.length; i++) 
        {
-         console.log('in loop')
+         //console.log('in loop')
          this.servers += `<a class="text-dark" href="http://${servers_urls[_servers[i].trim()]}/${this.row['appName']}" target="_blank">${_servers[i]}</a><br>`;
        }    
    },

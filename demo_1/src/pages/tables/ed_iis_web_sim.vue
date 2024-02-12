@@ -42,36 +42,111 @@
                 <i class='mdi mdi-home-outline'></i> All apps
                 
               </template>
-              <first-row :filterByApp="filterByApp"></first-row> 
+              <first-row3 :filterByApp="filterByApp"></first-row3> 
                 <div>
-                  
-                  <!--<first-row :sortByElement="sortByElement" :filterByFiled="filterByFiled"></first-row> -->
-              
-              <build-all-row2 v-for="row in data_json_for_all_runs_tab.slice(0, 10)" :key="row._id.$oid" :row="row" :refreshData = "refreshData">
-                
-              </build-all-row2>
-              
-              
+                  <!--<first-row3 :sortByElement="sortByElement" :filterByFiled="filterByFiled"></first-row3> -->
+              <build-all-row3 v-for="row in data_json_for_all_runs_tab" :key="row._id.$oid" :row="row" :refreshData = "refreshData"></build-all-row3>
                 </div>   
                       
               
             </b-tab>
-            <!--<b-tab>
+            <b-tab>
               <template slot="title">
                 <i class="mdi mdi-weather-night"></i> 2012
               </template>
-                <div>
-                  <first-row-no-filter> </first-row-no-filter> 
-                  <build-all-row2 v-for="(row,i) in makeRC" :key="'row'+i" :row="row" :index="i"></build-all-row2>  
+              <b-tabs>
+              <b-tab>
+                <template slot="title">
+                <i class="mdi mdi-weather-night"></i> All
+              </template>  
+              <div>
+                <first-row3-no-filter> </first-row3-no-filter> 
+                  <build-all-row3 v-for="(row,i) in twoThousandTwelveApps" :key="'row'+i" :row="row" :index="i"></build-all-row3>  
                 </div>
+              </b-tab>
+              
+              <b-tab>
+                <template slot="title">
+                <i class="mdi mdi-weather-night"></i> Test
+              </template> 
+              <div>
+                  <first-row3-no-filter> </first-row3-no-filter> 
+                  <build-all-row3 v-for="(row,i) in twoThousandTwelveAppsTest" :key="'row'+i" :row="row" :index="i"></build-all-row3>  
+                </div> 
+              </b-tab>
+              <b-tab>
+                <template slot="title">
+                <i class="mdi mdi-weather-night"></i> Prod
+              </template> 
+              <div>
+                  <first-row3-no-filter> </first-row3-no-filter> 
+                  <build-all-row3 v-for="(row,i) in twoThousandTwelveAppsProd" :key="'row'+i" :row="row" :index="i"></build-all-row3>  
+                </div> 
+              </b-tab>
+              <b-tab>
+                <template slot="title">
+                <i class="mdi mdi-weather-night"></i> Dev
+              </template> 
+              <div>
+                  <first-row3-no-filter> </first-row3-no-filter> 
+                  <build-all-row3 v-for="(row,i) in twoThousandTwelveAppsDev" :key="'row'+i" :row="row" :index="i"></build-all-row3>  
+                </div> 
+              </b-tab>
+            </b-tabs>
+                
+            </b-tab>
+            <b-tab>
+              <template slot="title">
+                <i class="mdi mdi-weather-night"></i> 2016
+              </template>
+              <b-tabs>
+              <b-tab>
+                <template slot="title">
+                <i class="mdi mdi-weather-night"></i> All
+              </template>  
+              <div>
+                <first-row3-no-filter> </first-row3-no-filter> 
+                  <build-all-row3 v-for="(row,i) in twoThousandSixteenApps" :key="'row'+i" :row="row" :index="i"></build-all-row3>  
+                </div>
+              </b-tab>
+              
+              <b-tab>
+                <template slot="title">
+                <i class="mdi mdi-weather-night"></i> Test
+              </template> 
+              <div>
+                  <first-row3-no-filter> </first-row3-no-filter> 
+                  <build-all-row3 v-for="(row,i) in twoThousandSixteenAppsTest" :key="'row'+i" :row="row" :index="i"></build-all-row3>  
+                </div> 
+              </b-tab>
+              <b-tab>
+                <template slot="title">
+                <i class="mdi mdi-weather-night"></i> Prod
+              </template> 
+              <div>
+                  <first-row3-no-filter> </first-row3-no-filter> 
+                  <build-all-row3 v-for="(row,i) in twoThousandSixteenProd" :key="'row'+i" :row="row" :index="i"></build-all-row3>  
+                </div> 
+              </b-tab>
+              <b-tab>
+                <template slot="title">
+                <i class="mdi mdi-weather-night"></i> Dev
+              </template> 
+              <div>
+                  <first-row3-no-filter> </first-row3-no-filter> 
+                  <build-all-row3 v-for="(row,i) in twoThousandSixteenDev" :key="'row'+i" :row="row" :index="i"></build-all-row3>  
+                </div> 
+              </b-tab>
+            </b-tabs>
+                
             </b-tab>
             <b-tab>
               <template slot="title">
                 <i class="icon-settings "></i> Dev
               </template>
                 <div>
-                  <first-row :filterByApp="filterByApp"></first-row> 
-                  <build-all-row2 v-for="(row,i) in devApps" :key="'row'+i" :row="row" :index="i"></build-all-row2>  
+                  <first-row3 :filterByApp="filterByApp"></first-row3> 
+                  <build-all-row3 v-for="(row,i) in devApps" :key="'row'+i" :row="row" :index="i"></build-all-row3>  
                 </div>
             </b-tab>
 
@@ -80,8 +155,8 @@
                 <i class="icon-settings "></i> Net
               </template>
                 <div>
-                  <first-row-no-filter> </first-row-no-filter> 
-                  <build-all-row2 v-for="(row,i) in netApps" :key="'row'+i" :row="row" :index="i"></build-all-row2>  
+                  <first-row3-no-filter> </first-row3-no-filter> 
+                  <build-all-row3 v-for="(row,i) in netApps" :key="'row'+i" :row="row" :index="i"></build-all-row3>  
                 </div>
             </b-tab>
 
@@ -90,8 +165,8 @@
                  <i class="ti-android"></i>2022
               </template>
               <div>
-                  <first-row-no-filter> </first-row-no-filter> 
-                  <build-all-row2 v-for="(row,i) in androidClientChange" :key="'row'+i" :row="row" :index="i"></build-all-row2>  
+                  <first-row3-no-filter> </first-row3-no-filter> 
+                  <build-all-row3 v-for="(row,i) in twoThousandTwentyTwoApps" :key="'row'+i" :row="row" :index="i"></build-all-row3>  
                 </div>
               
             </b-tab>
@@ -100,8 +175,8 @@
                 <i class="mdi mdi-android-studio"></i>  Batch
               </template>
               <div>
-                  <first-row-no-filter> </first-row-no-filter> 
-                  <build-all-row2 v-for="(row,i) in androidAppChange" :key="'row'+i" :row="row" :index="i"></build-all-row2>  
+                  <first-row3-no-filter> </first-row3-no-filter> 
+                  <build-all-row3 v-for="(row,i) in androidAppChange" :key="'row'+i" :row="row" :index="i"></build-all-row3>  
                 </div>
              
             </b-tab>
@@ -110,8 +185,8 @@
                 <i class="ti-world"></i>  Stage
               </template>
               <div>
-                  <first-row-no-filter> </first-row-no-filter>  
-                  <build-all-row2 v-for="(row,i) in WebChange" :key="'row'+i" :row="row" :index="i"></build-all-row2>  
+                  <first-row3-no-filter> </first-row3-no-filter>  
+                  <build-all-row3 v-for="(row,i) in WebChange" :key="'row'+i" :row="row" :index="i"></build-all-row3>  
                 </div>
              
             </b-tab>
@@ -120,12 +195,11 @@
                 <i class="fa fa-reorder"></i> Crm
               </template>
               <div>
-                  <first-row-no-filter> </first-row-no-filter> 
-                  <build-all-row2 v-for="(row,i) in HEChange" :key="'row'+i" :row="row" :index="i"></build-all-row2>  
+                  <first-row3-no-filter> </first-row3-no-filter> 
+                  <build-all-row3 v-for="(row,i) in HEChange" :key="'row'+i" :row="row" :index="i"></build-all-row3>  
                 </div>
               
             </b-tab>
-            -->
 
           </b-tabs>
         </div>
@@ -135,9 +209,9 @@
 </template>
 
 <script>
-import row2 from '../../components/tables-dev/rows/edWeb/row2.vue'
-import firstRow from '../../components/tables-dev/rows/edWeb/firstRow.vue'
-//import firstRowNoFilter from '../../components/tables-dev/rows/edWeb/firstRowNoFilter.vue'
+import row3 from '../../components/tables-dev/rows/edWeb/row3.vue'
+import firstRow3 from '../../components/tables-dev/rows/edWeb/firstRow3.vue'
+import firstRow3NoFilter from '../../components/tables-dev/rows/edWeb/firstRow3NoFilter.vue'
 import addNewApplication from '@/pages/forms/add-new-application.vue' 
 //import updateAppWindow from '@/components/alerts/sweet-alert/updateAppWindow.vue'
 //import updateAppWindow from '@/pages/forms/update-application.vue' 
@@ -146,9 +220,9 @@ import addNewApplication from '@/pages/forms/add-new-application.vue'
 
   export default {
     components: {
-      "build-all-row2": row2,
-      "first-row": firstRow,
-  //    "first-row-no-filter": firstRowNoFilter,
+      "build-all-row3": row3,
+      "first-row3": firstRow3,
+      "first-row3-no-filter": firstRow3NoFilter,
       "add-new-application": addNewApplication,
      // "updateAppWindow-Window": updateAppWindow
     },
@@ -478,6 +552,69 @@ computed: {
       {
         const a  = this.originalJson_for_all_run_tab.filter((item,index) => {
           return (item['appName'].toString().includes("Net"))
+        });
+        return a
+      },
+      twoThousandTwelveApps: function()
+      {
+        const a  = this.originalJson_for_all_run_tab.filter((item,index) => {
+          return (item['servers'].toString().includes("2012"))
+        });
+        return a
+      },
+      twoThousandTwelveAppsTest: function()
+      {
+        const a  = this.originalJson_for_all_run_tab.filter((item,index) => {
+          return (item['servers'].toString().includes("ITESTDMZ1") || item['servers'].toString().includes("ITEST20121"))
+        });
+        return a
+      },
+      twoThousandTwelveAppsProd: function()
+      {
+        const a  = this.originalJson_for_all_run_tab.filter((item,index) => {
+          return (item['servers'].toString().includes("IPRODDMZ") ||item['servers'].toString().includes("iprod2012"))
+        });
+        return a
+      },
+      twoThousandTwelveAppsDev: function()
+      {
+        const a  = this.originalJson_for_all_run_tab.filter((item,index) => {
+          return (item['servers'].toString().includes("idev2012"))
+        });
+        return a
+      },
+      twoThousandTwentyTwoApps: function()
+      {
+        const a  = this.originalJson_for_all_run_tab.filter((item,index) => {
+          return (item['servers'].toString().includes("2022"))
+        });
+        return a
+      },
+      twoThousandSixteenApps: function()
+      {
+        const a  = this.originalJson_for_all_run_tab.filter((item,index) => {
+          return (item['servers'].toString().includes("2022"))
+        });
+        return a
+      },
+      twoThousandSixteenAppsProd: function()
+      {
+        const a  = this.originalJson_for_all_run_tab.filter((item,index) => {
+          return (item['servers'].toString().includes("2022"))
+        });
+        return a
+      },
+      twoThousandSixteenAppsTest: function()
+      {
+        const a  = this.originalJson_for_all_run_tab.filter((item,index) => {
+          return (item['servers'].toString().includes("2022"))
+        });
+        return a
+      },
+      twoThousandSixteenAppsDev: function()
+      {
+        const a  = this.originalJson_for_all_run_tab.filter((item,index) => {
+          return (item['servers'].toString().includes("2022"))
         });
         return a
       },

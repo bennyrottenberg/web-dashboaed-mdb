@@ -82,6 +82,16 @@
                         </b-form-input>
                       </b-form-group>
 
+                      <b-form-group label="appNameHeb" >
+                    <b-form-input  required v-model=" rowData.appNameHeb">
+                      <p>
+                {{ rowData['appNameHeb'] }}
+               
+                  </p>
+                        </b-form-input>
+                      </b-form-group>
+
+
                       <b-form-group label=" servers" >
                     <b-form-input  required v-model=" rowData.servers">
                       <p>

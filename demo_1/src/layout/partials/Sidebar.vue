@@ -10,15 +10,19 @@
           </span>
           <b-collapse accordion="sidebar-accordion" id="table-dropdown">
             <ul class="nav flex-column sub-menu">
-              <li class="nav-item">
+              <!--<li class="nav-item">
                 <router-link class="nav-link" to="/tables/stage3-ottsg/">stage3-ottsg</router-link>
               </li>
              <li class="nav-item">
                 <router-link class="nav-link" to="/tables/stage3-mdrm/">stage3-mdrm</router-link>
-              </li>
+              </li>-->
               <li class="nav-item">
                 <router-link class="nav-link" to="/tables/iis-web/">ED-IIS-Web</router-link>
               </li>
+              <li class="nav-item">
+                <router-link class="nav-link" to="/tables/iis-web-sim/">ED-IIS-Web-SIM</router-link>
+              </li>
+              <!--
               <li class="nav-item">
                 <router-link class="nav-link" to="/tables/dropdownMenu/">new-menu</router-link>
               </li>
@@ -28,7 +32,7 @@
               <li class="nav-item">
                 <router-link class="nav-link" to="/tables/updateApplication/">update-application</router-link>
               </li>
-               <!--<li class="nav-item">
+               <li class="nav-item">
                 <router-link class="nav-link" to="/tables/advanced-tables/">Advanced Table Try</router-link>
               </li>
               <li class="nav-item">

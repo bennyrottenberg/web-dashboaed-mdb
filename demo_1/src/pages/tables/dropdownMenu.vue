@@ -62,7 +62,7 @@
         },
         mounted(){
             setTimeout(() => { console.log("wait before load records to search menu"); }, 10000);
-            var api_name = "education/get_all_apps_data?rowNum=2000"
+            var api_name = "education/get_all_apps_data?rowNum=8000"
             fetch("http://127.0.0.1:5000/api/"+api_name)
             .then (res => res.json())
             .then(json => 
