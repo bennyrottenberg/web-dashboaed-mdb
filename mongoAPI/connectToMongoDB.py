@@ -8,6 +8,23 @@ from flask import Response
 from flask import request
 
 
+def getEDConfig(confType):
+    if confType == "local":
+        print("confType app: ",confType)
+        return "configEDIISWebAppsLocal.json"
+    else:
+        print("confType app: ",confType)
+        return "configEDIISWebApps.json"
+
+def getEDCertsConfig(confType):
+    if confType == "local":
+        print("confType cert: ",confType)
+        return "configEDIISWebCertsLocal.json"
+    else:
+        print("confType cert: ",confType)
+        return "configEDIISWebCerts.json"
+
+
 
 def get_db_collection(conf_file):
     f = open('config/'+conf_file)
@@ -75,10 +92,16 @@ def getLatestDataMDRM(rowNum):
     connection.close()
     return json_projects 
 
-
+def getLatestDataEDCerts(rowNum):
+    collection = get_db_collection(getEDCertsConfig('local'))
+    projects = collection[1].find().sort([('$natural', -1)]).limit(rowNum)
+    json_projects = editResult(projects,'reverse')
+    #connection.close()
+    collection[0].close
+    return json_projects 
 
 def getLatestDataED(rowNum):
-    collection = get_db_collection('configEDIISWebApps.json')
+    collection = get_db_collection(getEDConfig('local'))
     projects = collection[1].find().sort([('$natural', -1)]).limit(rowNum)
     json_projects = editResult(projects,'reverse')
     #connection.close()
@@ -87,7 +110,7 @@ def getLatestDataED(rowNum):
 
 def insert_app(_mydict):
     print("insert_app start, mydict is:")
-    collection = get_db_collection('configEDIISWebApps.json')
+    collection = get_db_collection(getEDConfig('local'))
     mydict = json.loads(_mydict)
     x = collection[1].insert_one(mydict)
     collection[0].close
@@ -98,7 +121,7 @@ def insert_app(_mydict):
 def edit_document(mydict):
     print("edit_document start ...")
     print("mydict:",mydict)
-    collection = get_db_collection('configEDIISWebApps.json')
+    collection = get_db_collection(getEDConfig('local'))
     print(collection)
     print(collection)
     data = json.loads(mydict)
@@ -140,7 +163,7 @@ def edit_document(mydict):
 
 
 def update_app(id):
-    collection = get_db_collection('configEDIISWebApps.json')
+    collection = get_db_collection(getEDConfig('local'))
     try:
         dbResponse = collection[1].update_one(
         {"_id": ObjectId(id)},
@@ -165,7 +188,7 @@ def update_app(id):
 
 def add_comment(mydict):
     print("add_comment started")
-    collection = get_db_collection('configEDIISWebApps.json')
+    collection = get_db_collection(getEDConfig('local'))
     print("mydict:",mydict)
     print(collection)
     data = json.loads(mydict)

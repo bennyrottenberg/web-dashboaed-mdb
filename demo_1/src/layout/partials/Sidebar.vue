@@ -22,6 +22,9 @@
               <li class="nav-item">
                 <router-link class="nav-link" to="/tables/iis-web-sim/">ED-IIS-Web-SIM</router-link>
               </li>
+              <li class="nav-item">
+                <router-link class="nav-link" to="/tables/ed-certs/">ED-Certs</router-link>
+              </li>
               <!--
               <li class="nav-item">
                 <router-link class="nav-link" to="/tables/dropdownMenu/">new-menu</router-link>
