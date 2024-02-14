@@ -1,6 +1,6 @@
 <template>
   <div class="main-div">
-    <h4 class="text-dark">ED IIS Web application</h4>
+    <h4 class="text-dark">Certificates</h4>
     <div class="col-sm-12 grid-margin stretch-card" >
       <div class="card-card" style="width: 150rem; ">
         <div class="card-body">    
@@ -39,7 +39,7 @@
 
               
               <template slot="title">
-                <i class='mdi mdi-home-outline'></i> All apps
+                <i class='mdi mdi-home-outline'></i> All Certs
                 
               </template>
               <first-row-certs :filterByApp="filterByApp"></first-row-certs> 
@@ -50,156 +50,28 @@
                       
               
             </b-tab>
+
             <b-tab>
               <template slot="title">
-                <i class="mdi mdi-weather-night"></i> 2012
+                <i class="icon-settings "></i> About to expired
               </template>
-              <b-tabs>
-              <b-tab>
-                <template slot="title">
-                <i class="mdi mdi-weather-night"></i> All
-              </template>  
-              <div>
-                <first-row-cerst-no-filter> </first-row-cerst-no-filter> 
-                  <row-certs v-for="(row,i) in twoThousandTwelveApps" :key="'row'+i" :row="row" :index="i"></row-certs>  
+                <div>
+                  <first-row-cerst-no-filter> </first-row-cerst-no-filter> 
+                  <row-certs v-for="(row,i) in AboutToExpired" :key="'row'+i" :row="row" :index="i"></row-certs>  
                 </div>
-              </b-tab>
-              
-              <b-tab>
-                <template slot="title">
-                <i class="mdi mdi-weather-night"></i> Test
-              </template> 
-              <div>
-                  <first-row-cerst-no-filter> </first-row-cerst-no-filter> 
-                  <row-certs v-for="(row,i) in twoThousandTwelveAppsTest" :key="'row'+i" :row="row" :index="i"></row-certs>  
-                </div> 
-              </b-tab>
-              <b-tab>
-                <template slot="title">
-                <i class="mdi mdi-weather-night"></i> Prod
-              </template> 
-              <div>
-                  <first-row-cerst-no-filter> </first-row-cerst-no-filter> 
-                  <row-certs v-for="(row,i) in twoThousandTwelveAppsProd" :key="'row'+i" :row="row" :index="i"></row-certs>  
-                </div> 
-              </b-tab>
-              <b-tab>
-                <template slot="title">
-                <i class="mdi mdi-weather-night"></i> Dev
-              </template> 
-              <div>
-                  <first-row-cerst-no-filter> </first-row-cerst-no-filter> 
-                  <row-certs v-for="(row,i) in twoThousandTwelveAppsDev" :key="'row'+i" :row="row" :index="i"></row-certs>  
-                </div> 
-              </b-tab>
-            </b-tabs>
-                
             </b-tab>
+
+
             <b-tab>
               <template slot="title">
-                <i class="mdi mdi-weather-night"></i> 2016
-              </template>
-              <b-tabs>
-              <b-tab>
-                <template slot="title">
-                <i class="mdi mdi-weather-night"></i> All
-              </template>  
-              <div>
-                <first-row-cerst-no-filter> </first-row-cerst-no-filter> 
-                  <row-certs v-for="(row,i) in twoThousandSixteenApps" :key="'row'+i" :row="row" :index="i"></row-certs>  
-                </div>
-              </b-tab>
-              
-              <b-tab>
-                <template slot="title">
-                <i class="mdi mdi-weather-night"></i> Test
-              </template> 
-              <div>
-                  <first-row-cerst-no-filter> </first-row-cerst-no-filter> 
-                  <row-certs v-for="(row,i) in twoThousandSixteenAppsTest" :key="'row'+i" :row="row" :index="i"></row-certs>  
-                </div> 
-              </b-tab>
-              <b-tab>
-                <template slot="title">
-                <i class="mdi mdi-weather-night"></i> Prod
-              </template> 
-              <div>
-                  <first-row-cerst-no-filter> </first-row-cerst-no-filter> 
-                  <row-certs v-for="(row,i) in twoThousandSixteenProd" :key="'row'+i" :row="row" :index="i"></row-certs>  
-                </div> 
-              </b-tab>
-              <b-tab>
-                <template slot="title">
-                <i class="mdi mdi-weather-night"></i> Dev
-              </template> 
-              <div>
-                  <first-row-cerst-no-filter> </first-row-cerst-no-filter> 
-                  <row-certs v-for="(row,i) in twoThousandSixteenDev" :key="'row'+i" :row="row" :index="i"></row-certs>  
-                </div> 
-              </b-tab>
-            </b-tabs>
-                
-            </b-tab>
-            <b-tab>
-              <template slot="title">
-                <i class="icon-settings "></i> Dev
+                <i class="icon-settings "></i> Expired
               </template>
                 <div>
                   <first-row-certs :filterByApp="filterByApp"></first-row-certs> 
-                  <row-certs v-for="(row,i) in devApps" :key="'row'+i" :row="row" :index="i"></row-certs>  
+                  <row-certs v-for="(row,i) in Expired" :key="'row'+i" :row="row" :index="i"></row-certs>  
                 </div>
             </b-tab>
 
-            <b-tab>
-              <template slot="title">
-                <i class="icon-settings "></i> Net
-              </template>
-                <div>
-                  <first-row-cerst-no-filter> </first-row-cerst-no-filter> 
-                  <row-certs v-for="(row,i) in netApps" :key="'row'+i" :row="row" :index="i"></row-certs>  
-                </div>
-            </b-tab>
-
-            <b-tab>
-              <template slot="title">
-                 <i class="ti-android"></i>2022
-              </template>
-              <div>
-                  <first-row-cerst-no-filter> </first-row-cerst-no-filter> 
-                  <row-certs v-for="(row,i) in twoThousandTwentyTwoApps" :key="'row'+i" :row="row" :index="i"></row-certs>  
-                </div>
-              
-            </b-tab>
-            <b-tab>
-              <template slot="title">
-                <i class="mdi mdi-android-studio"></i>  Batch
-              </template>
-              <div>
-                  <first-row-cerst-no-filter> </first-row-cerst-no-filter> 
-                  <row-certs v-for="(row,i) in androidAppChange" :key="'row'+i" :row="row" :index="i"></row-certs>  
-                </div>
-             
-            </b-tab>
-            <b-tab>
-              <template slot="title">
-                <i class="ti-world"></i>  Stage
-              </template>
-              <div>
-                  <first-row-cerst-no-filter> </first-row-cerst-no-filter>  
-                  <row-certs v-for="(row,i) in WebChange" :key="'row'+i" :row="row" :index="i"></row-certs>  
-                </div>
-             
-            </b-tab>
-            <b-tab>
-              <template slot="title">
-                <i class="fa fa-reorder"></i> Crm
-              </template>
-              <div>
-                  <first-row-cerst-no-filter> </first-row-cerst-no-filter> 
-                  <row-certs v-for="(row,i) in HEChange" :key="'row'+i" :row="row" :index="i"></row-certs>  
-                </div>
-              
-            </b-tab>
 
           </b-tabs>
         </div>
@@ -512,14 +384,15 @@ created() {
   
   //this.loadMongoDBCollection('education/get_all_apps_data?rowNum=50',this.loadMongoDBCollection_callback())
   
-  this.loadMongoDBCollection_for_all_run_tab('education/get_all_apps_data_certs?rowNum=5')
+  this.loadMongoDBCollection_for_all_run_tab('education/get_all_apps_data_certs?rowNum=500')
   setTimeout(() => { console.log("wait before load more records"); }, 20000);
-  this.loadMongoDBCollection_for_all_run_tab('education/get_all_apps_data_certs?rowNum=5')
+  this.loadMongoDBCollection_for_all_run_tab('education/get_all_apps_data_certs?rowNum=500')
   //this.interval = setInterval(() => {this.loadMongoDBCollection('education/get_all_apps_data?rowNum=50');console.log("load db");}, 600000);
   //this.interval = setInterval(() => {this.loadMongoDBCollection_for_all_run_tab('education/get_all_apps_data?rowNum=2000');console.log("load education mongodb");}, 1200000);
 },
 
 computed: {
+  
       androidClientChange: function()
       {
         const a  = this.originalJson.filter((item,index) => {
@@ -618,18 +491,70 @@ computed: {
         });
         return a
       },
-      devApps: function()
+      Expired: function()
       {
+        var now = new Date();
+        
+        var numDaysBetween = function(d1, d2) {
+          if( d2 !== undefined)
+          {
+            var diff = (d1.getTime() - d2.getTime());
+          return diff / (1000 * 60 * 60 * 24);
+
+          }
+          return 10000
+        
+        }
+  
         const a  = this.originalJson_for_all_run_tab.filter((item,index) => {
-          return (item['serverName'].toString().includes("dev"))
+
+          if(item['expDate'] !== undefined)
+          {
+            var dateSplited = item['expDate'].split('.')
+          var day = dateSplited[1]
+          var month = dateSplited[0]
+          var year = dateSplited[2]
+          var dateData = new Date(year,month,day);
+
+          }
+          
+
+
+          return ( numDaysBetween(now, dateData) < 0)
         });
         return a
       },
       
-      RAndD: function()
+      AboutToExpired: function()
       {
-        const a  = this.originalJson.filter((item,index) => {
-          return (item['user id'].toString() === 'R_D_pipeline')
+        var now = new Date();
+        
+        var numDaysBetween = function(d1, d2) {
+          if( d2 !== undefined)
+          {
+            var diff = (d1.getTime() - d2.getTime());
+          return diff / (1000 * 60 * 60 * 24);
+
+          }
+          return 10000
+        
+        }
+  
+  
+        const a  = this.originalJson_for_all_run_tab.filter((item,index) => {
+
+          if(item['expDate'] !== undefined)
+          {
+            var dateSplited = item['expDate'].split('.')
+          var day = dateSplited[1]
+          var month = dateSplited[0]
+          var year = dateSplited[2]
+          var dateData = new Date(year,month,day);
+
+          }
+
+
+          return ( numDaysBetween(now, dateData) < 30)
         });
         return a
       },

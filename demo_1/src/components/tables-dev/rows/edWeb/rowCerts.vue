@@ -20,8 +20,8 @@
       <b-col class="text-center">{{this.row['subject']}}</b-col>
      
      
-
-     <b-col class="text-center">{{this.row['expDate']}}</b-col>
+      
+     <b-col class="text-center"><span v-html="dateColored"></span></b-col>
 
 
 
@@ -124,40 +124,80 @@ export default {
     dateWithColor()
     {//var d = new Date(2011,10,30);
       var dateSplited = this.row['expDate'].split('.')
-      var day = dateSplited[0]
-      var month = dateSplited[1]
+      var day = dateSplited[1]
+      var month = dateSplited[0] -1
       var year = dateSplited[2]
       var dateData = new Date(year,month,day);
       var now = new Date();
-      console.log("now: ",now)
-      console.log("Date: ",dateData)
+      //console.log("now: ",now)
+      //console.log("Date: ",dateData)
       var difference = now - dateData;
 
       var numDaysBetween = function(d1, d2) {
-  var diff = Math.abs(d1.getTime() - d2.getTime());
+  var diff = (d1.getTime() - d2.getTime());
   return diff / (1000 * 60 * 60 * 24);
 };
+this.dateColored = ""
 
-console.log("numDaysBetween")
-console.log(numDaysBetween(now, dateData))
 
-      console.log("difference: ",difference)
-      if(dateData < now)
-            {
-              console.log("Selected date is in the past");
-              this.dateColored +=  `<a class="text-danger"href="${this.row['expDate']}" target="_blank">web</a><br>`
+      //console.log("difference: ",difference)
+      if(numDaysBetween(dateData,now) > 0)
+        {
+          if( this.row['serverName']=="benny")
+          {
+              console.log("=======benny==benny==benny=benny=")
 
-              //toolTipStr+="tests Failed on Web \n"
+
+              console.log("dateSplited",dateSplited)
+              console.log("day",day)
+              console.log("month",month)
+              console.log("year",month)
+              console.log(dateData)
+
               
-            }
-            else
-            {
-              console.log("Selected date is NOT in the past");
-              this.dateColored +=  `<a class="text-dark"href="${this.row['expDate']}" target="_blank">web</a><br>`
-              //toolTipStr+="tests passed on Web \n"
 
-            }
 
+
+              console.log("now: ",now)
+
+
+
+              console.log("dateData: ",dateData)
+              
+              console.log("dateData.getTime()")
+              console.log(dateData.getTime())
+              console.log("now.getTime()")
+              console.log(now.getTime())
+              console.log(numDaysBetween(now, dateData))
+              
+          }
+          if (numDaysBetween(dateData,now) >30)
+          {
+            //console.log("d > 30")
+              //console.log(numDaysBetween(now, dateData))
+              
+              this.dateColored = `<p class="text-success" ><b>${this.row['expDate']}</b></p>`
+          }
+          else
+         {  
+
+          console.log("dateSplited",dateSplited)
+              console.log("day",day)
+              console.log("month",month)
+              console.log("year",month)
+              console.log(dateData)
+          console.log("d < 30")
+          console.log(now, dateData)
+              console.log(numDaysBetween(now, dateData))
+          this.dateColored = ` <p class="text-warning" ><b>${this.row['expDate']}</b></p>`
+          
+         }
+          
+        }
+        else
+        {
+          this.dateColored = `<p class="text-danger"><b>${this.row['expDate']}</b></p>`
+        }
 
     },
    openWndowToUpdate(){
